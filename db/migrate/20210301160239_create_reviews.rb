@@ -6,8 +6,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.integer :rating
       t.integer :like
       t.integer :dislike
-      t.references :spots, null: false, foreign_key: true
-      t.references :users, null: false, foreign_key: true
+      t.references :spot, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 2021_03_01_160324) do
   create_table "reports", force: :cascade do |t|
     t.string "description"
     t.string "category"
-    t.bigint "users_id", null: false
-    t.bigint "reviews_id", null: false
-    t.bigint "spots_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.bigint "spot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["reviews_id"], name: "index_reports_on_reviews_id"
-    t.index ["spots_id"], name: "index_reports_on_spots_id"
-    t.index ["users_id"], name: "index_reports_on_users_id"
+    t.index ["review_id"], name: "index_reports_on_review_id"
+    t.index ["spot_id"], name: "index_reports_on_spot_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(version: 2021_03_01_160324) do
     t.integer "rating"
     t.integer "like"
     t.integer "dislike"
-    t.bigint "spots_id", null: false
-    t.bigint "users_id", null: false
+    t.bigint "spot_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["spots_id"], name: "index_reviews_on_spots_id"
-    t.index ["users_id"], name: "index_reviews_on_users_id"
+    t.index ["spot_id"], name: "index_reviews_on_spot_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "spots", force: :cascade do |t|
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2021_03_01_160324) do
     t.string "address"
     t.string "description"
     t.string "category"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_spots_on_users_id"
+    t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2021_03_01_160324) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "reports", "reviews", column: "reviews_id"
-  add_foreign_key "reports", "spots", column: "spots_id"
-  add_foreign_key "reports", "users", column: "users_id"
-  add_foreign_key "reviews", "spots", column: "spots_id"
-  add_foreign_key "reviews", "users", column: "users_id"
-  add_foreign_key "spots", "users", column: "users_id"
+  add_foreign_key "reports", "reviews"
+  add_foreign_key "reports", "spots"
+  add_foreign_key "reports", "users"
+  add_foreign_key "reviews", "spots"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "spots", "users"
 end
