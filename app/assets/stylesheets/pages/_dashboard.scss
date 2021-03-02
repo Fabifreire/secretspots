@@ -1,0 +1,19 @@
+.scroll {
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
+  // white-space: nowrap;
+}
+
+.horizontal {
+  width: 100%;
+  background-color: $lightblue;
+  margin-bottom: 2rem;
+  @media (min-width: 769px) {
+    background-color: $white;
+
+  }
+}
