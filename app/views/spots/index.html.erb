@@ -1,4 +1,12 @@
 <div class="container">
+  <%= form_tag spots_path, class: "search", method: :get do %>
+    <%= text_field_tag :query,
+     params[:query],
+      class: "form-control",
+      placeholder: "Find a secret spot!"
+    %>
+    <%#= submit_tag "Search", class: "btn" , id: 'search' %>
+  <% end %>
   <% @spots.each do |s|%>
     <div class="spot_card">
         <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
