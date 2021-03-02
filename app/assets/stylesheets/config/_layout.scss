@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  padding: 2rem;
+  margin-top: 3.5rem;
+  @media (min-width: 769px) {
+    width: 70vw;
+    max-width: 960px;
+    margin: 3.5rem auto 0 auto;
+    background-color: white;
+    // height: 70vh;
+  }
+}
+
+.container {
+  text-align: center;
+  & img {
+    width: 100%;
+  }
+}
