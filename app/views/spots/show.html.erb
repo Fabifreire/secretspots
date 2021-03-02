@@ -1,24 +1,30 @@
 <div class="container">
-  <h1 class="small-title"> About this spot: </h1>
-    <br>
-    <div class="horizontal">
-      <%= image_tag "spot.jpg"%>
-      <%= image_tag "spot2.jpg"%>
-    </div>
-  <br>
-  <br>
-  <h3> <%= @spot.name.capitalize %> </h3>
-  <p> Address: <%= @spot.address %> </p>
-  <p> description: <%= @spot.description%> </p>
-  <p> category: <%= @spot.category %> </p>
-  <br>
-
-  <div  class="action">
-    <%= link_to 'Review', "#", class: 'btn' %>
-    <%= link_to 'add to favorites', "#", class: 'btn-outline' %>
-  </div>
-<br>
-<br>
-<%= link_to 'go back', "#", class: "btn-small" %>
-  </div>
+  <h1 class="small-text"> About this spot: </h1>
 </div>
+  <div class="horizontal">
+    <div class="scroll">
+      <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+      <%= image_tag "spot2.jpg", class: 'spot_img gallery'%>
+      <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+      <%= image_tag "spot2.jpg", class: 'spot_img gallery'%>
+    </div>
+  </div>
+
+  <div class="container-nomargin">
+
+        <div class="spot_content">
+          <%= link_to '#', class: 'favorite' do%>
+            <i class="far fa-heart"></i>
+          <% end%>
+          <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
+          <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
+          <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
+          <p class="spot_text"><strong>Rating: </strong>5</p>
+          <br>
+          <p class="spot_name-blue">Description</p>
+          <p class="spot_text">Mixin names, like all Sass identifiers, treat hyphens and underscores as identical. This means that reset-list and reset_list both refer to the same mixin. This is a historical holdover from the very early days of Sass, when it only allowed underscores in identifier names. Once Sass added support for hyphens to match CSS’s syntax, the two were made equivalent to make migration easier.</p>
+        </div>
+
+  </div>
+
+

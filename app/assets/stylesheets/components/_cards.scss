@@ -26,6 +26,9 @@
   color: $action;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  &-blue {
+    color: $lightblue;
+  }
 }
 
 .spot_text {
@@ -42,3 +45,46 @@
   font-weight: 600;
   font-size: 1.5rem;
 }
+
+.favorite {
+  @include reset-link;
+  color: $action;
+  font-weight: 600;
+  font-size: 1.5rem;
+  float: right;
+}
+
+
+.scroll {
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.horizontal {
+  width: 100%;
+  background-color: $lightgreen;
+  padding: 1rem;
+}
+
+.gallery {
+  margin: 0.5rem;
+}
+// .booking {
+//   width: 100%;
+// 	border-radius: 1px;
+// 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+// 	margin: 1rem;
+//   background-color: $white;
+//   text-align: left;
+//   flex: 0 0 auto;
+
+//   & img {
+//     width: 100%;
+//   }
+
+//   @media (min-width: 769px) {
+//     width: 30%;
+//   }
+// }

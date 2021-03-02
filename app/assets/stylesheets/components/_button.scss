@@ -1,7 +1,7 @@
 .btn {
   color: $white;
   background-color: $action;
-  opacity: 0.8;
+  // opacity: 0.8;
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -10,12 +10,12 @@
   transition: opacity 0.3s ease-out;
   // height: 2rem;
 
-  &:hover {
-    color: $white;
-    text-decoration: underline;
-    opacity: 1;
-    transition: opacity 0.3s ease-out;
-  }
+  // &:hover {
+  //   color: $white;
+  //   text-decoration: underline;
+  //   opacity: 1;
+  //   transition: opacity 0.3s ease-out;
+  // }
 }
 
 .btn-outline {
@@ -29,15 +29,15 @@
   border-radius: 50px;
   border: 1px solid $action;
   padding: 0.75rem 1rem;
-  opacity: 0.8;
+  // opacity: 0.8;
   transition: opacity 0.3s ease-out;
 
-  &:hover {
-  color: $action;
-    text-decoration: underline;
-    opacity: 1;
-    transition: opacity 0.3s ease-out;
-  }
+  // &:hover {
+  // color: $action;
+  //   text-decoration: underline;
+  //   opacity: 1;
+  //   transition: opacity 0.3s ease-out;
+  // }
 }
 
 // .action {
