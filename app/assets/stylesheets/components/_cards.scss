@@ -1,0 +1,44 @@
+.spot_card {
+  border-radius: 3px;
+  border: 1px solid $light-gray;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-bottom: 2rem;
+  background-color: $white;
+  position: relative;
+}
+
+.spot_img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.spot_content {
+  padding: 1rem;
+}
+
+.spot_name {
+  @include reset-link;
+  font-family: $headers-font;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+  color: $action;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.spot_text {
+  margin: 0;
+  line-height: 1.5rem;
+}
+
+#favorite {
+  position: absolute;
+  @include reset-link;
+  top: 200px;
+  right: 10%;
+  color: $action;
+  font-weight: 600;
+  font-size: 1.5rem;
+}

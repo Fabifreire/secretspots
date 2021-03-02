@@ -1,1 +1,18 @@
-<h1>Hello</h1>
+<div class="container">
+  <% @spots.each do |s|%>
+    <div class="spot_card">
+        <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
+        <img src="https://source.unsplash.com/random" class="spot_img">
+        <div class="spot_content">
+          <%= link_to s.name, '#', class: 'spot_name' %>
+          <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
+          <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
+          <p class="spot_text"><strong>Rating: </strong>5</p>
+        </div>
+
+        <%= link_to '#', id: 'favorite' do%>
+          <i class="far fa-heart"></i>
+        <% end%>
+    </div>
+  <% end%>
+</div>
