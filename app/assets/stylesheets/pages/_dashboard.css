@@ -8,11 +8,9 @@
   height: 5rem;
   object-fit: cover;
   margin-bottom: 1rem;
-  float: right; 
+  float: right;
 }
 
-
 .small-title {
-  font-size: 1.2rem;
-  color: $lightblue;
+  font-size: 1.5rem;
 }
