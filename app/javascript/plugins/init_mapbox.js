@@ -1,6 +1,8 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+// import MapboxDirections from 'mapbox-gl-directions';
+
 
 const addMarkersToMap = (map, markers) => {
     markers.forEach((marker) => {
@@ -60,6 +62,8 @@ const initMapbox = () => {
         }));
 
 			addCurrentLocation(map);
+
+     
     }
 };
 
