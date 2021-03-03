@@ -18,16 +18,14 @@ end
 puts "done"
 
 puts "generating 10 spots"
-10.times do
-  puts "."
-  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: Faker::Address.full_address, category: category.sample)
-end
-
-puts "done"
-puts "cleaning the database..."
-
-puts "Creating spots..."
- 10.times do
- Spot.create(name:Faker::Color.color_name, address: Faker::Address.city, description: "This spot is amazing!", category: "By the ocean")
-end
-puts "done"
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Cascais", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Carcavelos", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Parede", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Oeiras", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Lisboa", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "barcelona", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Madrid", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Paris", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Rome", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "London", category: category.sample)
+puts "Success!"
