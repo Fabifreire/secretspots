@@ -7,9 +7,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 category = %w[monument mirador panoramic beach bay cliff]
-
-User.destroy_all
 Spot.destroy_all
+User.destroy_all
 
 puts "generating 10 users"
 10.times do
