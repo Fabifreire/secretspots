@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all.order(created_at: :desc)
-
+    @categories = %w[monument mirador panoramic beach bay cliff]
     # search 
     if params[:query].present? 
       sql_query = " \
@@ -13,6 +13,8 @@ class SpotsController < ApplicationController
         OR spots.category @@ :query \
       "
       @spots = Spot.where(sql_query, query: "%#{params[:query]}%")
+    # elsif params["/spots"]["category"].present?
+    #   @spots = Spot.where(category: params["/spots"]["category"])
     else 
       @spots = Spot.all.order(created_at: :desc)
     end
