@@ -111,9 +111,9 @@
   -moz-border-radius: 100%;
   -ms-border-radius: 100%;
   -o-border-radius: 100%;
-  background-color: $light-gray;
+  background-color: $action;
   position: fixed;
-  bottom: 10%;
+  bottom: 5%;
   left: 10%;
   z-index: 10;
   padding: 0.75rem;
@@ -124,14 +124,19 @@
   -ms-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
   
-  & .fa-arrow-up { 
-    color: $action;
-    font-size: 1.5rem;
+  & .fa-arrow-up,
+  & .fa-arrow-left { 
+    color: $white;
+    font-size: 1.75rem;
   }
 }
 
 
 .show {
   transition: display 0.5s ease-out;
-  opacity: 0.8;
+  opacity: 0.95;
+  -webkit-transition: display 0.5s ease-out;
+  -moz-transition: display 0.5s ease-out;
+  -ms-transition: display 0.5s ease-out;
+  -o-transition: display 0.5s ease-out;
 }

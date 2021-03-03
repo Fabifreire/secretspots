@@ -22,9 +22,17 @@
           <p class="spot_text"><strong>Rating: </strong>5</p>
           <br>
           <p class="spot_name-blue">Description</p>
-          <p class="spot_text">Mixin names, like all Sass identifiers, treat hyphens and underscores as identical. This means that reset-list and reset_list both refer to the same mixin. This is a historical holdover from the very early days of Sass, when it only allowed underscores in identifier names. Once Sass added support for hyphens to match CSS’s syntax, the two were made equivalent to make migration easier.</p>
+          <p class="spot_text">Mixin names, like all
+           Sass identifiers, treat hyphens and underscores as identical. This means that reset-list and reset_list both refer to the same mixin. This is a historical holdover from the very early days of Sass, when it only allowed underscores in identifier names. Once Sass added support for hyphens to match CSS’s syntax, the two were made equivalent to make migration easier.</p>
+           <%= link_to '< Back to list', spots_path, class: 'btn-small' %>
         </div>
 
   </div>
+
+<div class="up">
+    <%= link_to :back do %>
+    <i class="fas fa-arrow-left"></i>
+  <%end%>
+</div>
 
 

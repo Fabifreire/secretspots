@@ -9,6 +9,32 @@
   <%= f.full_error :reset_password_token %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                label: "First name",
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "First name" } %>
+    <%= f.input :last_name,
+                label: "Last name",
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Last name" } %>
+    <%= f.input :username,
+                label: "Last name",
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "Username" } %>
+    <%= f.input :photo,
+                label: "Profile picture",
+                as: :file,
+                required: false,
+                autofocus: true %>
+    <%= f.input :password,
+                label: "New password",
+                required: true,
+                autofocus: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
     <%= f.input :password,
                 label: "New password",
                 required: true,

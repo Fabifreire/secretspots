@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import { showButton } from "plugins/showButton"
 
 Rails.start()
 Turbolinks.start()
@@ -26,19 +27,6 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-// const showButton = () => {
-//   window.addEventListener('scroll', event => {
-//     const up = document.querySelector('.up');
-//     console.log(up);
-//     up.classList.add('show');
-//     console.log(event);
-//     console.log(event.srcElement.scrollingElement.scrollTop);
-//     const height = event.srcElement.scrollingElement.scrollTop;
-//     if (height < 65) {
-//       up.classList.remove('show');
-//     }
-//   });
-// }
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();

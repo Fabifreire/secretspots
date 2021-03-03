@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :map ]
 
   def home
+  end
+
+  def dashboard
+    @user = current_user
+    @spots = @user.spots
   end
 
   def map
@@ -28,5 +33,6 @@ class PagesController < ApplicationController
         infoWindow: render_to_string(partial: "shared/info_window", locals: { spot: spot })
       }
     end
+
   end
 end

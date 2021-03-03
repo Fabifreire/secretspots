@@ -7,6 +7,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 category = %w[monument mirador panoramic beach bay cliff]
+puts "cleaning the database..."
 Spot.destroy_all
 User.destroy_all
 
@@ -18,6 +19,7 @@ end
 puts "done"
 
 puts "generating 10 spots"
+
   Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Cascais", category: category.sample)
   Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Carcavelos", category: category.sample)
   Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Parede", category: category.sample)
@@ -29,3 +31,4 @@ puts "generating 10 spots"
   Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Rome", category: category.sample)
   Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "London", category: category.sample)
 puts "Success!"
+
