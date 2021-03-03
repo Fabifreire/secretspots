@@ -1,14 +1,20 @@
 <div class="container">
   <h1 class="small-text">Hello <%=@user.username.capitalize%>!</h1>    
   <div class="spot_card">
-  <%= cl_image_tag @user.photo.key , class: 'spot_img' %>
-    <div class="spot_content">
-      <img src="https://source.unsplash.com/random" class="profile_pic">
+    <div class="profile_content">
+      <div class="profile_text">
       <p class="spot_name">Details:</p>
       <p class="spot_text"><strong>First Name: </strong><%= @user.first_name.capitalize%></p>
       <p class="spot_text"><strong>Last Name: </strong><%= @user.last_name.capitalize%></p>
       <p class="spot_text"><strong>Username: </strong><%= @user.username%></p>
       <p class="spot_text"><strong>Email: </strong><%= @user.email%></p>
+      </div>
+      <div class="profile_media">
+        <%= user_image_tag @user, class: 'profile_pic'%>
+          <%= link_to edit_user_registration_path do %>
+          <i class="fas fa-edit"></i>
+        <% end%>
+      </div>
     </div>
   </div>
 </div>
