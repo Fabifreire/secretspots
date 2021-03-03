@@ -26,6 +26,7 @@
   color: $action;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  text-align: left;
   &-blue {
     color: $lightblue;
   }
@@ -34,6 +35,8 @@
 .spot_text {
   margin: 0;
   line-height: 1.5rem;
+  text-align: left;
+
 }
 
 #favorite {

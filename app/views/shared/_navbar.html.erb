@@ -6,19 +6,19 @@
         <%end%>
   </div>
   <div class="menu_box">
-  <%= link_to '#map', class: 'menu_item' do%>
+  <%= link_to '#map', class: "menu_item" do%>
         <%= image_tag "pin.png" , class: 'menu_icon' %>
         <p class="menu_text">Map</p>
         <%end%>
   </div>
   <div class="menu_box">
     <% if user_signed_in? %>
-    <%= link_to '#dashboard',class: 'menu_item' do%>
+    <%= link_to '#dashboard',class: "menu_item" do %>
     <%= image_tag "profile.png" , class: 'menu_icon' %>
     <p class="menu_text">Profile</p>
     <%end%>
     <% else %>
-    <%= link_to '#dashboard',class: 'menu_item' do%>
+    <%= link_to new_user_session_path ,class: "menu_item #{current_class?(new_user_session_path)}" do%>
     <%= image_tag "profile.png" , class: 'menu_icon' %>
     <p class="menu_text">Log in</p>
     <%end%>
