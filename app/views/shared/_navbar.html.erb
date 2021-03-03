@@ -12,9 +12,17 @@
         <%end%>
   </div>
   <div class="menu_box">
-  <%= link_to '#dashboard',class: 'menu_item' do%>
-        <%= image_tag "profile.png" , class: 'menu_icon' %>
-        <p class="menu_text">Profile</p>
-        <%end%>
+    <% if user_signed_in? %>
+    <%= link_to '#dashboard',class: 'menu_item' do%>
+    <%= image_tag "profile.png" , class: 'menu_icon' %>
+    <p class="menu_text">Profile</p>
+    <%end%>
+    <% else %>
+    <%= link_to '#dashboard',class: 'menu_item' do%>
+    <%= image_tag "profile.png" , class: 'menu_icon' %>
+    <p class="menu_text">Log in</p>
+    <%end%>
+    <% end %>
   </div>
+
 </div>

@@ -1,0 +1,31 @@
+@import url(application.js);
+
+.effect-wrapper {
+  text-align: center;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.typed {
+  font-weight: bold;
+  font-family: $typed-text-effet;
+  color: $action;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 5px;
+}
+.cursor {
+  display: inline-block;
+  background-color: $action;
+  animation: blinker 800ms infinite;
+}
+
+.cursor.typing-true {
+  animation: none;
+}
+
+@keyframes blinker {
+  0% { background-color: $action; }
+  50% { background-color: transparent; }
+  100% { background-color: $action; }
+}

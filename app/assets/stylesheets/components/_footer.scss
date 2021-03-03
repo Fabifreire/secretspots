@@ -1,0 +1,119 @@
+footer {
+  width: 100vw;
+  background-color: $lightaction;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & span {
+    font-family: $headers-font;
+    color: $action;
+  }
+
+
+  & h2 {
+    margin: 0;
+  }
+  // & .fab {
+  //   color: $action;
+  //   font-size: 1.5rem;
+  //   margin: 0 0.5rem;
+  //   transition: font-size 0.3s ease-out;
+  //   &:hover {
+  //     text-decoration: none;
+  //     font-size: 2rem;
+  //     transition: font-size 0.3s ease-out;
+  //   }
+  // }
+}
+
+.containerfooter, .containerfooter--mg,
+.containerfooter--md,
+.containerfooter--xs {
+  max-width: 1240px;
+  margin: 0 auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+  padding: 10px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.containerfooter--sm {
+    max-width: 1240px;
+  margin: 0 auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+  padding: 0 20px;
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.footer__top--img {
+    margin-bottom: 20px;
+    display: flex;
+
+}
+
+.footer__top--img img {
+    width: 60px;
+    height: 60px;
+    padding-top: 20px;
+}
+
+
+.footer__headline {
+    margin: 0 0 0px;
+    color: $lightblue;
+    font-family: $headers-font;
+    font-size: 28px;
+    font-weight: 650;
+    padding-top: 10px;
+    text-shadow: 0.4px 0.4px $light-gray;
+    -webkit-text-stroke: 0.4px $light-gray;
+    letter-spacing: 6px;
+    padding-left: 10px;
+
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.footer__bottom {
+    padding: 30px 0px 20px;
+    font-family: GT Pressura,sans-serif;
+    color: $white;
+    background: #63252a;
+    height: 7rem;
+}
+
+// .footer__bottom--nav ul {
+//     margin: 0;
+//     padding: 20px 0 0;
+//     list-style: none;
+// }
+
+// .footer__bottom--nav ul li {
+//     margin-bottom: 10px;
+// }
+
+// .footer__bottom--nav ul li a {
+//     color: #f8f3e4;
+//     text-decoration: underline;
+// }
+
+
+
+
+// .icons {
+//   margin-top: 1rem;
+// }

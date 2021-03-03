@@ -1,12 +1,14 @@
 .container {
   width: 100vw;
   padding: 2rem;
+  height:600px;
   margin-top: 3.5rem;
+  text-align:center;
 }
+
 .container-nomargin{
   width: 100vw;
   padding: 2rem;
-  background-color: $light-gray;
 }
 
 
@@ -15,3 +17,9 @@
   color: $lightblue;
   font-family: $headers-font;
 }
+
+// .container {
+//   width: 100vw;
+//   margin-top: 3.5rem;
+//   padding: 2rem;
+// }

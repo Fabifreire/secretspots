@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="header" style="background-image: url('<%= image_path "spot.jpg" %>')">
+<div class="banner">
+  <h1>SECRET SPOTS</h1>
+  <p class="effect-wrapper">Find your <span class="typed"></span><span class="cursor">&nbsp;</span></p>
+</div>
+<div class="btn">
+  <%= link_to 'get started', spots_path, class: 'btn-home' %>
+<span class="emoji">👈</span>
+</div>
+</div>
+<div class="container-home">
+  <div class="text">
+      <p>We do things in order to do things that lead us to make other things and we think that those things are cool.</p>
+  </div>
+  <div class="main">
+    <div class="single">
+          <i class="fas fa-archway"></i>
+          <p>This is our first value proposition and it's really great. Wow.</p>
+    </div>
+    <div class="single">
+          <i class="fas fa-helicopter"></i>
+          <p>Our second value proposition is pretty nice too. Don't you think?</p>
+    </div>
+    <div class="single">
+          <i class="fas fa-mountain"></i>
+          <p>Seriously guys this last value proposition is as good as a cuban mojito.</p>
+    </div>
+  </div>
+</div>
