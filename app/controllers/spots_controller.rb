@@ -5,15 +5,15 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all.order(created_at: :desc)
 
-    # search 
-    if params[:query].present? 
+    # search
+    if params[:query].present?
       sql_query = " \
         spots.name @@ :query \
         OR spots.address @@ :query \
         OR spots.category @@ :query \
       "
       @spots = Spot.where(sql_query, query: "%#{params[:query]}%")
-    else 
+    else
       @spots = Spot.all.order(created_at: :desc)
     end
     if @spots.empty?
