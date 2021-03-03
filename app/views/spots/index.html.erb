@@ -1,15 +1,9 @@
 <div class="container">
   <%= form_tag spots_path, class: "search", method: :get do %>
-    <%= text_field_tag :query,
-     params[:query],
-      class: "form-control",
-      placeholder: "Find a secret spot!"
-    %>
-    <%#= submit_tag "Search", class: "btn" , id: 'search' %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a secret spot!"%>
   <% end %>
   <% @spots.each do |s|%>
     <div class="spot_card">
-        <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
         <img src="https://source.unsplash.com/random" class="spot_img">
         <div class="spot_content">
           <%= link_to s.name, spot_path(s), class: 'spot_name' %>
@@ -18,15 +12,15 @@
           <p class="spot_text"><strong>Rating: </strong>5</p>
         </div>
 
-        <%= link_to '#', id: 'favorite' do%>
+        <%= link_to '#', id: 'favorite' do %>
           <i class="far fa-heart"></i>
-        <% end%>
+        <% end %>
     </div>
-  <% end%>
+  <% end %>
 </div>
 
 <div class="up">
   <%= link_to spots_path(anchor: 'menu') do %>
   <i class="fas fa-arrow-up"></i>
-  <%end%>
+  <% end %>
 </div>
