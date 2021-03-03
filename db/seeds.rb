@@ -7,9 +7,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 category = %w[monument mirador panoramic beach bay cliff]
-
-User.destroy_all
+puts "cleaning the database..."
 Spot.destroy_all
+User.destroy_all
 
 puts "generating 10 users"
 10.times do
@@ -19,16 +19,13 @@ end
 puts "done"
 
 puts "generating 10 spots"
-10.times do
-  puts "."
-  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: Faker::Address.full_address, category: category.sample)
-end
+
+Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'alfama, lisboa', category: category.sample)
+Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'tpur eiffel, paris', category: category.sample)
+Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'anjos, lisboa', category: category.sample)
+Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'campos santana, lisboa', category: category.sample)
+
 
 puts "done"
-puts "cleaning the database..."
 
-puts "Creating spots..."
- 10.times do
- Spot.create(name:Faker::Color.color_name, address: Faker::Address.city, description: "This spot is amazing!", category: "By the ocean")
-end
-puts "done"
+

@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path 'logo.png' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
   <body>
@@ -22,41 +22,24 @@
       <h1>Sorry we are not on desktop yet.... check us out on mobile!!!</h1>
     </div>
   </body>
-
-
-    <footer class="footer">
-     <div class="top-footer-container">
+  <footer class="footer">
+    <div class="top-footer-container">
       <div class="footer__top">
         <div class="containerfooter">
-            <div class="footer__top--img">
-              <%= image_tag "logo.png"%>
-            </div>
-              <h4 class="footer__headline">Stay off the beaten path.</h4>
-<!--               <div class="footer__top--nav">
-                <ul id="menu-footer">
-                  <li><a href="">Item</a></li>
-                  <li><a href="/places">Item</a></li>
-                  <li><a href="">Item</a></li>
-                  <li><a href="">Item</a></li>
-                </ul>
-              </div> -->
+          <div class="footer__top--img">
+          <%= image_tag "logo.png"%>
+          </div>
+        <h4 class="footer__headline">Stay off the beaten path.</h4>
         </div>
       </div>
     </div>
-      <div class="footer__bottom">
-        <div class="containerfooter--sm">
-          <div>
-              <p>© 2021 Secret Spots.</p>
-              <p>Coded by Fabio, Alex & Susanna.</p>
-          </div>
-         <!--  <div class="footer__bottom--nav">
-            <ul>
-              <li><a href="/privacy-policy/">Privacy Policy</a></li>
-              <li><a href="/terms">Terms & Conditions</a></li>
-            </ul>
-          </div> -->
-        </div>
+  <div class="footer__bottom">
+    <div class="containerfooter--sm">
+      <div>
+      <p>© 2021 Secret Spots.</p>
+      <p>Coded by Fabio, Alex & Susanna.</p>
       </div>
-    </footer>
-
+    </div>
+  </div>
+</footer>
 </html>

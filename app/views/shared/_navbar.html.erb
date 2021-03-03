@@ -6,7 +6,9 @@
         <%end%>
   </div>
   <div class="menu_box">
-  <%= link_to '#map', class: "menu_item" do%>
+
+  <%= link_to map_path, class: "menu_item #{current_class?(map_path)}" do%>
+
         <%= image_tag "pin.png" , class: 'menu_icon' %>
         <p class="menu_text">Map</p>
         <%end%>

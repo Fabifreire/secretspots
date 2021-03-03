@@ -1,11 +1,6 @@
 <div class="container">
   <%= form_tag spots_path, class: "search", method: :get do %>
-    <%= text_field_tag :query,
-     params[:query],
-      class: "form-control",
-      placeholder: "Find a secret spot!"
-    %>
-    <%#= submit_tag "Search", class: "btn" , id: 'search' %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a secret spot!"%>
   <% end %>
   <% @spots.each do |s|%>
     <div class="spot_card">
@@ -18,15 +13,15 @@
           <p class="spot_text"><strong>Rating: </strong>5</p>
         </div>
 
-        <%= link_to '#', id: 'favorite' do%>
+        <%= link_to '#', id: 'favorite' do %>
           <i class="far fa-heart"></i>
-        <% end%>
+        <% end %>
     </div>
-  <% end%>
+  <% end %>
 </div>
 
 <div class="up">
   <%= link_to spots_path(anchor: 'menu') do %>
   <i class="fas fa-arrow-up"></i>
-  <%end%>
+  <% end %>
 </div>
