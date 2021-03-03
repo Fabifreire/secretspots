@@ -2,6 +2,11 @@
   <%= form_tag spots_path, class: "search", method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a secret spot!"%>
   <% end %>
+
+  <%= simple_form_for spots_path, method: :get do |f| %>
+    <%= f.input :category, collection: @categories %>
+    <%= f.button :submit, "filter" %>
+  <% end %>
   <% @spots.each do |s|%>
     <div class="spot_card">
         <%#= image_tag spot_image_tag(s) , class: 'spot_img' %>
