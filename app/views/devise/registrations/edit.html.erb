@@ -52,9 +52,9 @@
 <% end %>
 
 <div class="center">
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), class: 'btn-small', data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), class: 'btn-small', data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<p>Still happy? <%= link_to "Go back", :back , class: 'btn-small'%></p>
+<p><%= link_to "Go back", :back , class: 'btn-small'%></p>
 </div>
 
 </div>
