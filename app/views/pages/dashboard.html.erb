@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="small-text">Hello <%=@user.username.capitalize%>!</h1>    
   <div class="spot_card">
-  <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
+  <%= cl_image_tag @user.photo.key , class: 'spot_img' %>
     <div class="spot_content">
       <img src="https://source.unsplash.com/random" class="profile_pic">
       <p class="spot_name">Details:</p>
@@ -37,7 +37,7 @@
     <div class="scroll">
     <% @spots.each do |s|%>
     <div class="spot_card">
-        <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
+        <%= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
         <img src="https://source.unsplash.com/random" class="spot_img">
         <div class="spot_content">
           <%= link_to s.name, spot_path(s), class: 'spot_name' %>
