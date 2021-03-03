@@ -33,4 +33,14 @@
 
 .fa-edit {
   float: right;
+  font-size: 1.5rem;
+}
+
+
+.dashboard_card {
+  width: 90%;
+  background-color: $white;
+  margin-right: 1rem;
+  flex: 0 0 auto;
+  position: relative;
 }
