@@ -13,7 +13,7 @@
   </div>
   <div class="menu_box">
     <% if user_signed_in? %>
-    <%= link_to '#dashboard',class: "menu_item" do %>
+    <%= link_to dashboard_path ,class: "menu_item #{current_class?(dashboard_path)}" do %>
     <%= image_tag "profile.png" , class: 'menu_icon' %>
     <p class="menu_text">Profile</p>
     <%end%>
