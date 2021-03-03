@@ -20,12 +20,15 @@ puts "done"
 
 puts "generating 10 spots"
 
-Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'alfama, lisboa', category: category.sample)
-Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'tpur eiffel, paris', category: category.sample)
-Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'anjos, lisboa', category: category.sample)
-Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: 'campos santana, lisboa', category: category.sample)
-
-
-puts "done"
-
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Cascais", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Carcavelos", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Parede", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Oeiras", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Lisboa", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "barcelona", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Madrid", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Paris", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Rome", category: category.sample)
+  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "London", category: category.sample)
+puts "Success!"
 
