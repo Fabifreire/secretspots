@@ -13,9 +13,10 @@
   <div class="container-nomargin">
 
         <div class="spot_content">
-          <%= link_to '#', class: 'favorite' do%>
-            <i class="far fa-heart"></i>
-          <% end%>
+          <%#= link_to '#', class: 'favorite' do%>
+            <%# <i class="far fa-heart"></i> %>
+          <%# end%>
+          <%= render "favorites/add_to_fav", spot: @spot %>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
           <p class="spot_text"><strong>Rating: </strong>5</p>

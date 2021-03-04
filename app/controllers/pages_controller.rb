@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @spots = @user.spots
+    @favorites = @user.favorites
   end
 
   def map

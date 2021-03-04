@@ -5,6 +5,11 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all.order(created_at: :desc)
     @categories = %w[monument mirador panoramic beach bay cliff]
+    @user = current_user
+    # favorites
+    if @user
+      @favorites = @user.favorites
+    end
     # search 
     if params[:query].present? 
       sql_query = " \
@@ -24,6 +29,11 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @user = current_user
+
+    if @user
+      @favorites = @user.favorites
+    end
 	end
 
 

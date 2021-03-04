@@ -16,9 +16,7 @@
           <p class="spot_text"><strong>Rating: </strong>5</p>
         </div>
 
-        <%= link_to '#', id: 'favorite' do %>
-          <i class="far fa-heart"></i>
-        <% end %>
+         <%= render "favorites/add_fav", spot: s %>
     </div>
   <% end %>
 </div>
