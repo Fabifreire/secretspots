@@ -66,3 +66,12 @@ input.mapboxgl-ctrl-geocoder--input {
     font-size: 2rem;
   }
 }
+
+.marker {
+  background: url(asset-path('red_pin.png'));
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
