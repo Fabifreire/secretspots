@@ -6,7 +6,7 @@ const showButton = () => {
     console.log(event);
     console.log(event.srcElement.scrollingElement.scrollTop);
     const height = event.srcElement.scrollingElement.scrollTop;
-    if (height < 65) {
+    if (height < 175) {
       up.classList.remove('show');
     }
   });

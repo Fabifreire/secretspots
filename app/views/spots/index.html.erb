@@ -3,8 +3,8 @@
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a secret spot!"%>
   <% end %>
 
-  <%= simple_form_for spots_path, method: :get do |f| %>
-    <%= f.input :category, collection: @categories %>
+  <%= simple_form_for spots_path, class: 'filter', method: :get do |f| %>
+    <%= f.input :category, label: false, as: :select, prompt: 'Filter by category', collection: @categories %>
     <%= f.button :submit, "filter" %>
   <% end %>
 
