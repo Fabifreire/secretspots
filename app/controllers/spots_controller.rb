@@ -5,16 +5,20 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all.order(created_at: :desc)
 
+    @categories = %w[monument mirador panoramic beach bay cliff]
     # search
     if params[:query].present?
+
       sql_query = " \
         spots.name @@ :query \
         OR spots.address @@ :query \
         OR spots.category @@ :query \
       "
-      @spots = Spot.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @spots = Spot.all.order(created_at: :desc)
+
+      @spots = @spots.where(sql_query, query: "%#{params[:query]}%")
+    end
+    if params[:category].present?
+      @spots = @spots.where(category: params[:category])
     end
     if @spots.empty?
     flash.now[:alert] = "Sorry, we could not find what you're looking for."
@@ -24,7 +28,6 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
 	end
-
 
 	private
 

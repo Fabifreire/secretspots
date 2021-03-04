@@ -1,4 +1,21 @@
-<p class="spot_name"><%= spot.name.capitalize %></p>
-<p><strong>Address: </strong><%= spot.address %></p>
-<p><strong>Category: </strong><%= spot.category %></p>
-<%= link_to 'See more >', spot_path(spot), class: 'btn-small'%>
+
+<div id="<%= spot.id%>">
+ <h1 class="spot_name spot_name-blue"><%= spot.name%></h1>
+  <%#= link_to spot.name.capitalize, spot_path(spot), class: 'spot_name'%>
+  <p><strong>Address: </strong><%= spot.address %></p>
+  <p><strong>Category: </strong><%= spot.category %></p>
+
+  <div class="info">
+    <%= link_to spot_path(spot), class: 'info_action' do%>
+      <i class="fas fa-info-circle"></i>
+      <span>See more</span>
+    <%end%>
+    <br>
+    <%= link_to "https://www.google.com/maps/dir//#{spot.address}/@#{spot.latitude},#{spot.longitude},z", class: 'info_action', target: '_blank' do %>
+      <i class="fas fa-directions"></i>
+      <span>Directions</span>
+    <%end%>
+  </div>
+</div>
+
+
