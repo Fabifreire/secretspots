@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { showButton } from "plugins/showButton"
+// import { getDirections } from "plugins/get_directions"
 
 Rails.start()
 Turbolinks.start()

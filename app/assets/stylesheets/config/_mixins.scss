@@ -7,4 +7,13 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  &:visited {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
 }
