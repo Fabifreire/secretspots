@@ -5,20 +5,28 @@
     <%= submit_tag "Search", class: "btn btn-primary btn-margintop" %>
   <% end %>
 
-  <% @spots.each do |s|%>
+
+  <% @spots.each do |spot|%>
     <div class="spot_card">
         <%#= image_tag spot_image_tag(s) , class: 'spot_img' %>
-        <img src="https://source.unsplash.com/random" class="spot_img">
+        <div class="scroll">
+        <% if spot.photos.attached? %>
+          <% spot.photos.each do |photo|%>
+            <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
+          <% end %>
+       <% else %>
+        <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+      <% end %>
+    </div>
         <div class="spot_content">
-          <%= link_to s.name, spot_path(s), class: 'spot_name' %>
-          <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
-          <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
+          <%= link_to spot.name, spot_path(spot), class: 'spot_name' %>
+          <p class="spot_text"><strong>Address: </strong><%= spot.address%></p>
+          <p class="spot_text"><strong>Category: </strong><%= spot.category.capitalize%></p>
 
           <span><strong>Rating: </strong></span>
-                <% avg_rating(s).times do %>
+                <% avg_rating(spot).times do %>
                   <i class="fas fa-camera"></i>
                 <% end %>
-
         </div>
 
         <%= link_to '#', id: 'favorite' do %>

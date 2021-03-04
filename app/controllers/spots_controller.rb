@@ -4,11 +4,9 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all.order(created_at: :desc)
-
-    @categories = %w[monument mirador panoramic beach bay cliff]
-    # search
-    if params[:query].present?
-
+    @categories = Spot::CATEGORIES
+    # search 
+    if params[:query].present? 
       sql_query = " \
         spots.name @@ :query \
         OR spots.address @@ :query \
@@ -29,6 +27,21 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
 	end
 
+  def new
+    @spot = Spot.new
+    @categories = Spot::CATEGORIES
+  end
+
+  def create
+    @spot = Spot.new(spots_params)
+    @spot.user = current_user
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render "new"
+    end
+  end
+
 	private
 
   def fetch_spot
@@ -36,6 +49,6 @@ class SpotsController < ApplicationController
   end
 
   def spots_params
-    params.require(:spot).permit(:name, :address, :description, :category)
+    params.require(:spot).permit(:name, :address, :description, :category, photos: [])
   end
 end
