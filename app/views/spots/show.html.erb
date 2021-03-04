@@ -17,14 +17,19 @@
             <i class="far fa-heart"></i>
           <% end%>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
-          <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
           <p class="spot_text"><strong>Rating: </strong>5</p>
+          <%= link_to "https://www.google.com/maps/place/#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+            <i class="fas fa-directions"></i>
+          <%end%>
+          <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
+
           <br>
+ 
           <p class="spot_name-blue">Description</p>
           <p class="spot_text">Mixin names, like all
            Sass identifiers, treat hyphens and underscores as identical. This means that reset-list and reset_list both refer to the same mixin. This is a historical holdover from the very early days of Sass, when it only allowed underscores in identifier names. Once Sass added support for hyphens to match CSS’s syntax, the two were made equivalent to make migration easier.</p>
-           <%= link_to '< Back to list', spots_path, class: 'btn-small' %>
+           <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
         </div>
 
   </div>

@@ -37,3 +37,12 @@ input.mapboxgl-ctrl-geocoder--input {
 .mapboxgl-user-location-accuracy-circle {
   background-color: none;
 }
+
+.info_action {
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.info_action i {
+  font-size: 1.5rem;
+}

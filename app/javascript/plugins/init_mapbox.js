@@ -3,6 +3,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 // import MapboxDirections from 'mapbox-gl-directions';
 
+const api = 'pk.eyJ1Ijoic3VzYW5uYXBlenppbmkiLCJhIjoiY2trczlyYWRyMGNxMzJxcGJmOTZmY213byJ9.MKMDWkFyxS160hlxGSiT2g'
+
+const url = `https://api.mapbox.com/directions/v5/mapbox/cycling/-84.518641,39.134270;-84.512023,39.102779?geometries=geojson&access_token=${api}`
+
 
 const addMarkersToMap = (map, markers) => {
     markers.forEach((marker) => {
@@ -62,8 +66,13 @@ const initMapbox = () => {
         }));
 
 			addCurrentLocation(map);
-
-     
+      const canvas = map.getCanvasContainer();
+      fetch(url)
+        // Do something once HTTP response is received
+        .then(response => response.json())
+        .then((data) => {
+          console.log(data);
+      });
     }
 };
 
