@@ -1,7 +1,7 @@
 
 <% unless current_user.blank?%>
     <% if @favorites.find_by(spot: spot) %>
-        <%= link_to spot_favorites_path(spot), method: :delete, class: 'favorite', data: { confirm: 'Remove from favorites?'} do%>
+        <%= link_to spot_favorites_path(spot), method: :delete, class: 'favorite' do%>
           <i class="fas fa-heart"></i> 
         <%end%>
       <%else%>

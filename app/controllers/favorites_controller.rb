@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     @user = current_user
     @favorite = Favorite.create(user: @user, spot: @spot)
     @favorites = @user.favorites
-    
+    redirect_back(fallback_location: root_path)
   end
   
   def destroy
@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
     @favorites = @user.favorites
     @favorite = Favorite.find_by(user: @user, spot: @spot)
     @favorite.destroy
+    redirect_back(fallback_location: root_path)
   end
 
 end
