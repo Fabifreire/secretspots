@@ -1,12 +1,16 @@
 <div class="container">
   <h1 class="small-text"> About this spot: </h1>
 </div>
+
   <div class="horizontal">
     <div class="scroll">
-      <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
-      <%= image_tag "spot2.jpg", class: 'spot_img gallery'%>
-      <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
-      <%= image_tag "spot2.jpg", class: 'spot_img gallery'%>
+      <% if @spot.photos.attached? %>
+        <% @spot.photos.each do |photo|%>
+          <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
+        <% end %> 
+      <% else %>
+        <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+      <% end %>
     </div>
   </div>
 
@@ -27,8 +31,7 @@
           <br>
  
           <p class="spot_name-blue">Description</p>
-          <p class="spot_text">Mixin names, like all
-           Sass identifiers, treat hyphens and underscores as identical. This means that reset-list and reset_list both refer to the same mixin. This is a historical holdover from the very early days of Sass, when it only allowed underscores in identifier names. Once Sass added support for hyphens to match CSS’s syntax, the two were made equivalent to make migration easier.</p>
+          <p class="spot_text"> <%= @spot.description%> </p>
            <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
         </div>
 
