@@ -19,7 +19,7 @@
   justify-content: flex-end;
   height: 3.5rem;
   padding: 0 0.5rem;
-  &:hover, 
+  &:hover,
   &:visited {
     @include reset-link;
   }
@@ -45,3 +45,5 @@
     color: $action;
   }
 }
+
+

@@ -25,8 +25,17 @@
   <div class="scroll">
     <% @spots.each do |s|%>
     <div class="dashboard_card">
-        <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
-        <img src="https://source.unsplash.com/random" class="spot_img">
+        <% if s.photos.attached? %>
+          <%= link_to spot_path(s) do%>
+          <% photo = s.photos.sample%>
+          <%= cl_image_tag photo.key, class: 'spot_img' %>
+          <%end%>
+        <% else %>
+         <%= link_to spot_path(s) do%>
+          <%= image_tag "spot.jpg", class: 'spot_img'%>
+          <%end%>
+        <% end %>
+        
         <div class="spot_content">
           <%= link_to s.name, spot_path(s), class: 'spot_name' %>
           <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
@@ -34,20 +43,24 @@
           <p class="spot_text"><strong>Rating: </strong>5</p>
         </div>
 
-        <%= render "favorites/add_fav", spot: s %>
+        <%#= render "favorites/add_fav", spot: s %>
     </div>
   <% end%>
   </div>
-  <br>
-<%= link_to 'Add new spot', '#', class: 'btn' %>
+
+  </div>
+    <br>
+    <p class="center">Would you like to share your spot?</p>
+    <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
+  </div>
 
   <%else%>
     <p class="center">You don't have any spot yet, wanna add one?</p>
-    <%= link_to 'add', '#', class: 'btn' %>
+    <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
   <%end%>
 </div>
 
-<div class="container">
+<div class="container-nomargin">
 </div>
 
 <div class="horizontal">
@@ -56,8 +69,17 @@
   <div class="scroll">
     <% @favorites.each do |s|%>
     <div class="dashboard_card">
-        <%#= image_tag "https://source.unsplash.com/collections/4965742" , class: 'spot_img' %>
-        <img src="https://source.unsplash.com/random" class="spot_img">
+
+          <% if s.spot.photos.attached? %>
+            <%= link_to spot_path(s) do%>
+              <% photo = s.spot.photos.sample%>
+              <%= cl_image_tag photo.key, class: 'spot_img' %>
+            <% end %>
+            <% else %>
+            <%= link_to spot_path(s) do%>
+              <%= image_tag "spot.jpg", class: 'spot_img'%>
+            <% end %>
+          <% end %>
         <div class="spot_content">
           <%= link_to s.spot.name, spot_path(s.spot), class: 'spot_name' %>
           <p class="spot_text"><strong>Address: </strong><%= s.spot.address%></p>
@@ -73,8 +95,8 @@
   <% end%>
   </div>
   <%else%>
-    <p class="center">You don't have any spot yet, wanna add one?</p>
-    <%= link_to 'add', '#', class: 'btn' %>
+    <p class="center">You don't have any favorites, browse for secrets!</p>
+    <%= link_to 'Browse', spots_path, class: 'btn' %>
   <%end%>
 </div>
 
