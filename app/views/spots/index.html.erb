@@ -10,7 +10,12 @@
           <%= link_to s.name, spot_path(s), class: 'spot_name' %>
           <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
           <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
-          <p class="spot_text"><strong>Rating: </strong>5</p>
+
+          <span><strong>Rating: </strong></span>
+                <% avg_rating(s).times do %>
+                  <i class="fas fa-camera"></i>
+                <% end %>
+
         </div>
 
         <%= link_to '#', id: 'favorite' do %>

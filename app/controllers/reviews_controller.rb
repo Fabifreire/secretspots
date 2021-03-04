@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(reviews_params)
-    @review.bench = @spot
+    @review.spot = @spot
     @review.user = current_user
     if @review.save
       redirect_to spot_path(@spot)
@@ -26,8 +26,8 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:description, :rating, :spot_id, :user_id)
   end
 
-  def find_bench
-    @spot = Spot.find(params[:bench_id])
+  def find_spot
+    @spot = Spot.find(params[:spot_id])
   end
 
 end

@@ -18,22 +18,34 @@
 
 .spot_content {
   padding: 1rem;
+  width: auto;
 }
 
 .spot_name {
   @include reset-link;
   font-family: $headers-font;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.2rem;
-  color: $action;
   font-weight: 600;
+  letter-spacing: 3px;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  color: $lightblue;
   margin-bottom: 0.5rem;
+  text-decoration: none;
   text-align: left;
   &-blue {
-    color: $lightblue;
+  color: $lightblue;
+  font-family: $headers-font;
+  font-weight: 600;
+  letter-spacing: 3px;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  text-align: left;
   }
 }
+
+
 
 .spot_text {
   margin: 0;
@@ -61,7 +73,7 @@
 
 
 .scroll {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -80,6 +92,70 @@
 .margin-right {
   margin-right: 1rem;
   width: 100%;
+}
+
+.padding {
+  padding: 1.5rem;
+  @media (min-width: 769px) {
+    padding: 2rem;
+  }
+}
+
+.review_box{
+  width: 100%;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-right: 1rem;
+  background-color: $white;
+  text-align: left;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  padding: 1rem;
+  word-wrap: break-word;
+
+}
+
+
+.booking {
+  width: 110%;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin: 1rem;
+  background-color: $white;
+  text-align: left;
+  flex: 0 0 auto;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  // height: 300px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  // width: 400px;
+  margin-bottom: 1rem;
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+  }
+    &-link {
+    font-family: $headers-font;
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+    color: $lightblue;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.5rem;
+  }
+  @media (min-width: 769px) {
+  width: 30%;
+  margin-bottom: 2rem;
+  }
 }
 
 // .booking {

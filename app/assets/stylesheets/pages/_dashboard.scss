@@ -48,3 +48,21 @@
   flex: 0 0 auto;
   position: relative;
 }
+
+.horizontal {
+  width: 100%;
+  background-color: $lightgreen;
+  @media (min-width: 769px) {
+    background-color: $white;
+  }
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
+  // white-space: nowrap;
+}
