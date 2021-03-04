@@ -12,6 +12,7 @@ class SpotsController < ApplicationController
         OR spots.address @@ :query \
         OR spots.category @@ :query \
       "
+
       @spots = @spots.where(sql_query, query: "%#{params[:query]}%")
     end
     if params[:category].present?
@@ -40,7 +41,6 @@ class SpotsController < ApplicationController
       render "new"
     end
   end
-
 
 	private
 
