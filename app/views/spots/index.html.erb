@@ -1,10 +1,10 @@
 <div class="container">
   <%= form_tag spots_path, class: "search", method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a secret spot!"%>
-    <%= select_tag "category", options_for_select(@categories, params[:category]), prompt: "filter by category", class:"form-control"%>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= select_tag "category", options_for_select(@categories, params[:category]), prompt: "Filter by category", class:"form-control"%>
+    <%= submit_tag "Search", class: "btn btn-primary btn-margintop" %>
   <% end %>
-  
+
   <% @spots.each do |s|%>
     <div class="spot_card">
         <%#= image_tag spot_image_tag(s) , class: 'spot_img' %>
