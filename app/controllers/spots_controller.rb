@@ -12,12 +12,10 @@ class SpotsController < ApplicationController
         OR spots.address @@ :query \
         OR spots.category @@ :query \
       "
-      @spots = Spot.where(sql_query, query: "%#{params[:query]}%")
-
-    elsif !params["/spots"].nil? && params["/spots"]["category"].present?
-      @spots = Spot.where(category: params["/spots"]["category"])
-    else 
-      @spots = Spot.all.order(created_at: :desc)
+      @spots = @spots.where(sql_query, query: "%#{params[:query]}%")
+    end
+    if params[:category].present?
+      @spots = @spots.where(category: params[:category])
     end
     if @spots.empty?
     flash.now[:alert] = "Sorry, we could not find what you're looking for."
