@@ -128,24 +128,23 @@
 }
 
 .up {
-  border-radius: 100%;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
+  border-radius: 50%;
   background-color: $lightaction;
   position: fixed;
   bottom: 5%;
   left: 10%;
   z-index: 10;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   opacity: 0;
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.3s ease-out;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   -webkit-transition: opacity 0.3s ease-out;
   -moz-transition: opacity 0.3s ease-out;
   -ms-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
-
   & .fa-arrow-up,
   & .fa-arrow-left {
     color: $white;
