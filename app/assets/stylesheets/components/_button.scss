@@ -130,10 +130,6 @@
 .up {
   border-radius: 50%;
   background-color: $lightaction;
-  position: fixed;
-  bottom: 5%;
-  left: 10%;
-  z-index: 10;
   padding: 0.75rem 1rem;
   opacity: 0;
   transition: opacity 0.3s ease-out;
@@ -160,4 +156,24 @@
   -moz-transition: display 0.5s ease-out;
   -ms-transition: display 0.5s ease-out;
   -o-transition: display 0.5s ease-out;
+  position: fixed;
+  bottom: 5%;
+  left: 10%;
+  z-index: 10;
+}
+
+.stay_there {
+  // position: relative;
+  // bottom: 336px;
+  // left: 10%;
+  z-index: 10;
+  border-radius: 50%;
+  opacity: 0.95;
+  padding: 0.75rem 1rem;
+  & .fa-arrow-up,
+  & .fa-arrow-left {
+    color: $white;
+    font-size: 1.75rem;
+  }
+  width: 2rem;
 }
