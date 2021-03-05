@@ -92,12 +92,12 @@
     <div class="dashboard_card">
 
           <% if s.spot.photos.attached? %>
-            <%= link_to spot_path(s) do%>
+            <%= link_to spot_path(s.spot) do%>
               <% photo = s.spot.photos.sample%>
               <%= cl_image_tag photo.key, class: 'spot_img' %>
             <% end %>
             <% else %>
-            <%= link_to spot_path(s) do%>
+            <%= link_to spot_path(s.spot) do%>
               <%= image_tag "spot.jpg", class: 'spot_img'%>
             <% end %>
           <% end %>
