@@ -5,6 +5,19 @@
   align-items: flex-start;
 }
 
+.profile_card {
+  border-radius: 3px;
+  border: 1px solid $light-gray;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-bottom: 2rem;
+  background-color: $white;
+  position: relative;
+  margin-top: 3rem;
+  &-dashboard {
+    width: 600px;
+  }
+}
+
 .profile_text {
   width: 65%;
 }
@@ -69,5 +82,5 @@
 
 
 #favorites {
-  margin-top: 3.5rem;
+  margin-top: 2rem;
 }

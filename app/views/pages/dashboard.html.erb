@@ -1,6 +1,6 @@
 <div class="container">
-  <h1 class="small-text">Hello <%=@user.username.capitalize%>!</h1>
-  <div class="spot_card">
+  <h1 class="small-text">This is your profile, <%=@user.first_name.capitalize%>!</h1>
+  <div class="profile_card">
     <div class="profile_content">
       <div class="profile_text">
       <p class="spot_name">Details:</p>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="horizontal">
-  <h3 class="small-title">Your spots</h3>
+  <h3 class="spot_name-blue">Your spots</h3>
   <% if @spots.any?%>
   <div class="scroll">
     <% @spots.each do |s|%>
@@ -41,7 +41,7 @@
           <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
           <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
           <div>
-          <span>Rating:</span>
+          <strong>Rating:</strong>
           <% avg_rating(s).times do %>
           <div class ="icons-edit-delete-review-spot">
           <% end %>
@@ -81,7 +81,7 @@
 </div>
 
 <div class="horizontal">
-  <h3 class="small-title">Favorites</h3>
+  <h3 class="spot_name-blue">Favourites</h3>
   <% if @favorites.any?%>
   <div class="scroll">
     <% @favorites.each do |s|%>
@@ -118,13 +118,13 @@
   <% end%>
   </div>
   <%else%>
-    <p class="center">You don't have any favorites, browse for secrets!</p>
+    <p class="center">You don't have any favourites, browse for secrets!</p>
     <%= link_to 'Browse', spots_path, class: 'btn' %>
   <%end%>
 </div>
 
 
-<div class="container center">
+<div class="container-logout">
 <p>Done with sharing secrets?
 <%= link_to "Logout.", destroy_user_session_path, method: :delete, class: "btn-small" %></p>
 </div>
