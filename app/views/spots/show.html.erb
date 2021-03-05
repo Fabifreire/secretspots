@@ -21,6 +21,7 @@
           <%= render "favorites/add_to_fav", spot: @spot %>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
+
           <div>
           <span>Rating:</span>
           <% avg_rating(@spot).times do %>
@@ -28,7 +29,8 @@
           <% end %>
           </div>
 
-          <%= link_to "https://www.google.com/maps/place/#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+          <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+
             <i class="fas fa-directions"></i>
           <%end%>
           <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
@@ -73,7 +75,7 @@
 
   </div>
   <div class="action">
-    <%= link_to 'write a review', new_spot_review_path(@spot), class: 'btn-blue' %>
+    <%= link_to 'write a review', new_spot_review_path(@spot), class: 'btn' %>
   </div>
 <br>
 <br>
