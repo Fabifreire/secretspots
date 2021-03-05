@@ -3,14 +3,15 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.create(user: @user, spot: @spot)
     @favorites = @user.favorites.order(created_at: :desc)
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
+    redirect_to dashboard_path(anchor: :favorites)
   end
-
+  
   def destroy
     @favorites = @user.favorites.order(created_at: :desc)
     @favorite = Favorite.find_by(user: @user, spot: @spot)
     @favorite.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to dashboard_path(anchor: :favorites)
   end
 
 
