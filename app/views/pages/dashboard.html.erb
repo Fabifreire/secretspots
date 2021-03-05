@@ -28,42 +28,47 @@
         <% if s.photos.attached? %>
           <%= link_to spot_path(s) do%>
           <% photo = s.photos.sample%>
-          <%#= cl_image_tag photo.key, class: 'spot_img' %>
+          <%= cl_image_tag photo.key, class: 'spot_img' %>
           <%end%>
         <% else %>
          <%= link_to spot_path(s) do%>
           <%= image_tag "spot.jpg", class: 'spot_img'%>
           <%end%>
-        <% end %>
+        <%end%>
 
         <div class="spot_content">
-          <%= link_to s.name, spot_path(s), class: 'spot_name' %>
-          <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
-          <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
-          <div>
-          <strong>Rating:</strong>
-          <% avg_rating(s).times do %>
+
+            <%= link_to s.name, spot_path(s), class: 'spot_name' %>
+            <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
+            <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
+
           <div class ="icons-edit-delete-review-spot">
+          <span>Rating:</span>
+          <% avg_rating(s).times do %>
+
+            <i class="fas fa-camera"></i>
           <% end %>
           </div>
           <%= link_to new_spot_review_path(s) , class: 'btn-small' do %>
-          <i class="fas fa-comment-medical"></i>
+            <i class="fas fa-comment-medical"></i>
           <%end%>
 
           <%= link_to edit_spot_path(s), class: 'btn-small' do %>
-          <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
           <%end%>
 
           <%= link_to spot_path(s), class: 'btn-small', method: :delete, data: {confirm: 'Do you want to delete the bench?'} do %>
-          <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-trash-alt"></i>
           <%end%>
         </div>
-        </div>
 
-        <%#= render "favorites/add_fav", spot: s %>
+
     </div>
-  <% end%>
+    <% end %>
   </div>
+       <%#= render "favorites/add_fav", spot: s %>
+
+</div>
 
   </div>
     <br>
@@ -88,12 +93,12 @@
     <div class="dashboard_card">
 
           <% if s.spot.photos.attached? %>
-            <%= link_to spot_path(s) do%>
+            <%= link_to spot_path(s.spot) do%>
               <% photo = s.spot.photos.sample%>
               <%= cl_image_tag photo.key, class: 'spot_img' %>
             <% end %>
             <% else %>
-            <%= link_to spot_path(s) do%>
+            <%= link_to spot_path(s.spot) do%>
               <%= image_tag "spot.jpg", class: 'spot_img'%>
             <% end %>
           <% end %>
