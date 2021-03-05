@@ -1,4 +1,4 @@
-<div class="container-nomargin margin-top">
+<div class="container">
   <h3 class="small-title"> Write your review!</h3>
     <%= simple_form_for [@spot, @review] do |f| %>
       <%= f.error_notification %>
@@ -7,7 +7,11 @@
       <%= f.input :description%>
       <%= f.submit class: 'btn'%>
     <% end %>
-      <%= link_to :back do %>
-      <i class="fas fa-arrow-left"></i>
-    <%end%>
+
+</div>
+
+<div class="up">
+    <%= link_to :back do %>
+    <i class="fas fa-arrow-left"></i>
+  <%end%>
 </div>
