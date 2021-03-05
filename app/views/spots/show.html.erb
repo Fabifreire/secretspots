@@ -7,7 +7,7 @@
       <% if @spot.photos.attached? %>
         <% @spot.photos.each do |photo|%>
           <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
-        <% end %> 
+        <% end %>
       <% else %>
         <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
       <% end %>
@@ -17,13 +17,17 @@
   <div class="container-nomargin">
 
         <div class="spot_content">
-          <%#= link_to '#', class: 'favorite' do%>
-            <%# <i class="far fa-heart"></i> %>
-          <%# end%>
+
           <%= render "favorites/add_to_fav", spot: @spot %>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
-          <p class="spot_text"><strong>Rating: </strong>5</p>
+          <div>
+          <span>Rating:</span>
+          <% avg_rating(@spot).times do %>
+          <i class="fas fa-camera"></i>
+          <% end %>
+          </div>
+
           <%= link_to "https://www.google.com/maps/place/#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
             <i class="fas fa-directions"></i>
           <%end%>

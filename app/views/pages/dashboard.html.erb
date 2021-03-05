@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="small-text">Hello <%=@user.username.capitalize%>!</h1>    
+  <h1 class="small-text">Hello <%=@user.username.capitalize%>!</h1>
   <div class="spot_card">
     <div class="profile_content">
       <div class="profile_text">
@@ -12,7 +12,7 @@
       <div class="profile_media">
         <%= user_image_tag @user, class: 'profile_pic'%>
           <%= link_to edit_user_registration_path do %>
-          <i class="fas fa-edit"></i>
+          <i class="fas fa-edit float-right"></i>
         <% end%>
       </div>
     </div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="horizontal">
-  <h3 class="small-title">Your spots</h3>    
+  <h3 class="small-title">Your spots</h3>
   <% if @spots.any?%>
   <div class="scroll">
     <% @spots.each do |s|%>
@@ -28,19 +28,36 @@
         <% if s.photos.attached? %>
           <%= link_to spot_path(s) do%>
           <% photo = s.photos.sample%>
-          <%= cl_image_tag photo.key, class: 'spot_img' %>
+          <%#= cl_image_tag photo.key, class: 'spot_img' %>
           <%end%>
         <% else %>
          <%= link_to spot_path(s) do%>
           <%= image_tag "spot.jpg", class: 'spot_img'%>
           <%end%>
         <% end %>
-        
+
         <div class="spot_content">
           <%= link_to s.name, spot_path(s), class: 'spot_name' %>
           <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
           <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
-          <p class="spot_text"><strong>Rating: </strong>5</p>
+          <div>
+          <span>Rating:</span>
+          <% avg_rating(s).times do %>
+          <div class ="icons-edit-delete-review-spot">
+          <% end %>
+          </div>
+          <%= link_to new_spot_review_path(s) , class: 'btn-small' do %>
+          <i class="fas fa-comment-medical"></i>
+          <%end%>
+
+          <%= link_to edit_spot_path(s), class: 'btn-small' do %>
+          <i class="fas fa-edit"></i>
+          <%end%>
+
+          <%= link_to spot_path(s), class: 'btn-small', method: :delete, data: {confirm: 'Do you want to delete the bench?'} do %>
+          <i class="fas fa-trash-alt"></i>
+          <%end%>
+        </div>
         </div>
 
         <%#= render "favorites/add_fav", spot: s %>
@@ -64,7 +81,7 @@
 </div>
 
 <div class="horizontal">
-  <h3 class="small-title">Favorites</h3>    
+  <h3 class="small-title">Favorites</h3>
   <% if @favorites.any?%>
   <div class="scroll">
     <% @favorites.each do |s|%>
@@ -87,7 +104,13 @@
             <%# <i class="fas fa-directions"></i> %>
           <%#end%>
           <p class="spot_text"><strong>Category: </strong><%= s.spot.category.capitalize%></p>
-          <p class="spot_text"><strong>Rating: </strong>5</p>
+          <div>
+          <span>Rating:</span>
+          <% avg_rating(s.spot).times do %>
+          <i class="fas fa-camera"></i>
+          <% end %>
+          </div>
+
         </div>
 
           <%= render "favorites/add_fav", spot: s.spot %>

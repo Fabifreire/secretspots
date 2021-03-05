@@ -6,15 +6,15 @@ class SpotsController < ApplicationController
     @spots = Spot.all.order(created_at: :desc)
     @user = current_user
     @categories = Spot::CATEGORIES
-    
+
     # favorites
     if @user
       @favorites = @user.favorites
     end
-    
 
-    # search 
-    if params[:query].present? 
+
+    # search
+    if params[:query].present?
       sql_query = " \
         spots.name @@ :query \
         OR spots.address @@ :query \
@@ -54,6 +54,25 @@ class SpotsController < ApplicationController
       render "new"
     end
   end
+
+   def edit
+    @spot = Spot.find(params[:id])
+  end
+
+   def update
+    # @spot.update(spots_params)
+    # redirect_to spot_path(@spot)
+    @spot = Spot.find(params[:id])
+    @spot.update(spots_params)
+    redirect_to spot_path(@spot)
+  end
+
+    def destroy
+    @spot = Spot.find(params[:id])
+    @spot.user = current_user
+    @spot.destroy
+    redirect_to spots_path
+    end
 
 	private
 
