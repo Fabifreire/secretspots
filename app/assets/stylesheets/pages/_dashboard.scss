@@ -6,7 +6,7 @@
 }
 
 .profile_text {
-  width: 70%;
+  width: 65%;
 }
 
 .profile_media {
@@ -35,7 +35,7 @@
   color: $lightblue;
 }
 
-.fa-edit {
+.float-right {
   float: right;
   font-size: 1.5rem;
 }
@@ -65,4 +65,9 @@
   // overflow-x: scroll;
   // overflow-y: hidden;
   // white-space: nowrap;
+}
+
+
+#favorites {
+  margin-top: 3.5rem;
 }

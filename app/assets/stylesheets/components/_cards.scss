@@ -32,16 +32,18 @@
   margin-bottom: 0.5rem;
   text-decoration: none;
   text-align: left;
+  text-transform: uppercase;
+  
   &-blue {
-  color: $lightblue;
-  font-family: $headers-font;
-  font-weight: 600;
-  letter-spacing: 3px;
-  line-height: 1.5rem;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  text-decoration: none;
-  text-align: left;
+    color: $lightblue;
+    font-family: $headers-font;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    text-align: left;
   }
 }
 

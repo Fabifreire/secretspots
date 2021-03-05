@@ -1,7 +1,9 @@
-<div class="container">
+<div class="container-nomargin">
   <h3> Edit this spot </h3>
-
   <%= render'form', spot: @spot %>
-
-  <%= link_to 'Return', spots_path, class: 'btn-outline' %>
+  <div class="up">
+    <%= link_to :back do %>
+    <i class="fas fa-arrow-left"></i>
+  <%end%>
+</div>
 </div>

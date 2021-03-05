@@ -11,13 +11,16 @@ const url = `https://api.mapbox.com/directions/v5/mapbox/cycling/-84.518641,39.1
 const addMarkersToMap = (map, markers) => {
     markers.forEach((marker) => {
         const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+        const el = document.createElement('div');
+        el.classList.add('marker');
 
-        new mapboxgl.Marker()
+        new mapboxgl.Marker(el)
             .setLngLat([marker.lng, marker.lat])
             .setPopup(popup) // add this
             .addTo(map);
     });
 };
+
 
 const addCurrentLocation = (map) => {
 	const geolocate = new mapboxgl.GeolocateControl({
@@ -66,13 +69,8 @@ const initMapbox = () => {
         }));
 
 			addCurrentLocation(map);
-      const canvas = map.getCanvasContainer();
-      fetch(url)
-        // Do something once HTTP response is received
-        .then(response => response.json())
-        .then((data) => {
-          console.log(data);
-      });
+      map.scrollZoom.disable();
+
     }
 };
 
