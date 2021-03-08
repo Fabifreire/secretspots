@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     # redirect_back(fallback_location: root_path)
     redirect_to spot_path(@review.spot, anchor: @review.id)
   end
-  
+
   def destroy
     # @favorites = @user.favorites.order(created_at: :desc)
     @user_like = Like.find_by(user: @user, review: @review)
