@@ -94,9 +94,9 @@
 
 <div class="horizontal">
   <h3 class="spot_name-blue">Favourites</h3>
-  <% if @favorites.any?%>
+  <% if @favorites.reverse.any?%>
   <div class="scroll">
-    <% @favorites.each do |s|%>
+    <% @favorites.reverse.each do |s|%>
     <div class="dashboard_card">
 
           <% if s.spot.photos.attached? %>
