@@ -65,7 +65,7 @@
                   <%= b.user.first_name %>
                   <%= b.user.last_name %>
                   </p></strong>
-                  <p><%= b.description %></p>
+                  <p class="review_descripition"><%= b.description %></p>
                   <%= render "likes/like", spot: @spot, review: b %>
                 </div>
               <%end%>
@@ -77,11 +77,8 @@
                       <i class="fas fa-camera"></i>
                       <% end %>
                     </div>
-                        <p><strong>
-                        <%= b.user.first_name %>
-                        <%= b.user.last_name %>
-                        </p></strong>
-                        <p class="review_descripition"><%= b.description %></p>
+                        <p><strong><%=b.user.first_name %> <%= b.user.last_name %></strong></p>
+                        <p class="review_descripition">here class<%= b.description %></p>
                   <%= render "likes/like", spot: @spot, review: b %>
                 </div>
               <%end%>
