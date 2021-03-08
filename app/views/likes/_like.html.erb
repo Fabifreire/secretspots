@@ -1,0 +1,37 @@
+<% unless current_user.blank? %>
+  <% if current_user.likes %>
+    <% if current_user.likes.find_by(review: review)%>
+      <div class="likes">
+        <span class="likes_total"><%= review.likes.count%></span>
+        <%= link_to spot_review_likes_path(spot, review), method: :delete, class: 'dislike' do %>
+          <span class="likes_total">Likes</span>
+          <i class="fas fa-thumbs-up" id="thumb"></i>
+        <%end%>
+      </div>
+    <%else%>
+      <div class="likes">
+        <span class="likes_total"><%= review.likes.count%></span>
+        <%= link_to spot_review_likes_path(spot, review), method: :post, class: 'dislike' do %>
+          <span class="likes_total">Like</span>
+          <i class="far fa-thumbs-up" id="thumb"></i>
+        <%end%>
+      </div>
+    <%end%>
+  <%else%>
+    <div class="likes">
+      <span class="likes_total"><%= review.likes.count%></span>
+      <%= link_to spot_review_likes_path(spot, review), method: :post, class: 'dislike' do %>
+        <span class="likes_total">Like</span>
+        <i class="far fa-thumbs-up" id="thumb"></i>
+      <%end%>
+    </div>
+  <%end%>
+<%else%>
+  <div class="likes">
+    <span class="likes_total"><%= review.likes.count%> Likes</span>
+  </div>
+<%end%>
+
+
+
+

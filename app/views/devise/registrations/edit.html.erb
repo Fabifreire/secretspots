@@ -54,7 +54,13 @@
 <div class="center">
 <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), class: 'btn-small', data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<p><%= link_to "Go back", :back , class: 'btn-small'%></p>
+
 </div>
 
+</div>
+
+<div class="up">
+    <%= link_to :back do %>
+    <i class="fas fa-arrow-left"></i>
+  <%end%>
 </div>

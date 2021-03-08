@@ -34,15 +34,17 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @user = current_user
+    @reviews = @spot.reviews
     @pictures = @spot.photos
     @spot.reviews.each do |r|
       if r.photos.attached?
         r.photos.each do |picture|
           @pictures << picture
         end
-        @pictures 
+        @pictures
       end
     end
+
 
     if @user
       @favorites = @user.favorites
