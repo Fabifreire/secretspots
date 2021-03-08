@@ -51,6 +51,9 @@ let charIndex = 0; // Index of The Character which is being typed
 
 
 function typeText() {
+  // if (!typedSpan) {
+  //   return;
+  // }
   if (charIndex < totype[totypeIndex].length) {
     typedSpan.textContent += totype[totypeIndex].charAt(charIndex); // Value of The Span in HTML is = the Character at the index of charIndex of the Text which is being typed
     charIndex++; // Adding 1 to charIndex
@@ -62,6 +65,9 @@ function typeText() {
 }
 
 function eraseText() {
+  // if (!typedSpan) {
+  //   return;
+  // }
   if (charIndex > 0) {
     typedSpan.textContent = totype[totypeIndex].substring(0, charIndex-1); // substring(0, charIndex-1) here charIndex-1 is saying to select the text leaving one of last text behind
     charIndex = charIndex-1; // subtracting 1 from charIndex
@@ -77,5 +83,8 @@ function eraseText() {
 }
 
 window.onload = function() {
+  if (!typedSpan) {
+    return;
+  }
   if (totype[totypeIndex].length) setTimeout(typeText, delayTyping_text); // typeText() Function is called when everything is loaded
 }
