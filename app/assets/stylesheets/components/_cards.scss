@@ -57,23 +57,6 @@
   width: 85%;
 }
 
-#favorite {
-  position: absolute;
-  @include reset-link;
-  top: 200px;
-  right: 10%;
-  color: $action;
-  font-weight: 600;
-  font-size: 2rem;
-}
-
-.favorite {
-  @include reset-link;
-  color: $action;
-  font-weight: 600;
-  font-size: 2rem;
-  float: right;
-}
 
 
 .scroll {

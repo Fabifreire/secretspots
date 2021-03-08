@@ -20,8 +20,9 @@
   <div class="container-nomargin">
 
         <div class="spot_content">
-
-          <%= render "favorites/add_to_fav", spot: @spot %>
+          <div class="favorite">
+            <%= render "favorites/add_fav", spot: @spot %>
+          </div>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
 
@@ -71,7 +72,7 @@
               <%end%>
             <%else%>
               <% @spot.reviews.reverse.each do |b|%>
-                  <div class="review_box review_box-full" id="<%=b.id%>">
+                  <div class="review_box review_box-full" id="review_<%=b.id%>">
                     <div class="badge">
                       <% b.rating.to_i.times do %>
                       <i class="fas fa-camera"></i>
@@ -79,6 +80,7 @@
                     </div>
                         <p><strong><%=b.user.first_name %> <%= b.user.last_name %></strong></p>
                         <p class="review_descripition">here class<%= b.description %></p>
+                      
                   <%= render "likes/like", spot: @spot, review: b %>
                 </div>
               <%end%>
