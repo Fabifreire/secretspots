@@ -34,11 +34,9 @@ ActiveStorage.start()
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
-  // Call your functions here, e.g:
-  // initSelect2();
   showButton();
   initDots();
-  const flicking = new Flicking("#pictures_list", { circular: true, gap: 10 });
+  // const flicking = new Flicking("#pictures_list", { circular: true, gap: 10 });
 });
 
 
