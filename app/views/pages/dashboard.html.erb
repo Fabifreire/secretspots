@@ -37,10 +37,14 @@
         <%end%>
 
         <div class="spot_content">
+  
 
             <%= link_to s.name, spot_path(s), class: 'spot_name' %>
+        
             <p class="spot_text"><strong>Address: </strong><%= s.address%></p>
+       
             <p class="spot_text"><strong>Category: </strong><%= s.category.capitalize%></p>
+       
 
           <div class ="icons-edit-delete-review-spot">
           <span>Rating:</span>
@@ -49,17 +53,23 @@
             <i class="fas fa-camera"></i>
           <% end %>
           </div>
-          <%= link_to new_spot_review_path(s) , class: 'btn-small' do %>
-            <i class="fas fa-comment-medical"></i>
-          <%end%>
+          <%#= link_to new_spot_review_path(s) , class: 'btn-small' do %>
+            <%# <i class="fas fa-comment-medical"></i> %>
+          <%#end%>
 
-          <%= link_to edit_spot_path(s), class: 'btn-small' do %>
-            <i class="fas fa-edit"></i>
-          <%end%>
 
-          <%= link_to spot_path(s), class: 'btn-small', method: :delete, data: {confirm: 'Do you want to delete the bench?'} do %>
+          <div class="actions">
+              <%= link_to edit_spot_path(s), class: 'actions_btn' do %>
+              <i class="fas fa-edit"></i>
+            <%end%>
+          <%= link_to spot_path(s), class: 'actions_btn', method: :delete, data: {confirm: 'Do you want to delete the bench?'} do %>
             <i class="fas fa-trash-alt"></i>
           <%end%>
+          </div>
+
+
+
+ 
         </div>
 
 
