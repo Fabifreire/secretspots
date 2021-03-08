@@ -89,6 +89,7 @@
 
 .gallery {
   margin: 0.5rem;
+  width: 85%;
 }
 
 .margin-right {
@@ -104,7 +105,7 @@
 }
 
 .review_box{
-  width: 100%;
+  width: 85%;
   border-radius: 1px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   margin-right: 1rem;
@@ -184,6 +185,7 @@
   display: flex;
   align-items:baseline;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .actions_btn {
