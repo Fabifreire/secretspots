@@ -116,6 +116,9 @@
   padding: 1rem;
   word-wrap: break-word;
   position: relative;
+  &-full {
+    width: 100%;
+  }
 }
 .review_descripition {
   // margin-bottom: 1rem;

@@ -53,25 +53,39 @@
 
   <div class="horizontal" id="reviews">
         <div class="scroll">
-            <% @spot.reviews.reverse.each do |b|%>
-            <div class="review_box" id="<%=b.id%>">
+            <% if @spot.reviews.reverse.count > 1%>
+              <% @spot.reviews.reverse.each do |b|%>
+                <div class="review_box" id="<%=b.id%>">
+                  <div class="badge">
+                    <% b.rating.to_i.times do %>
+                  <i class="fas fa-camera"></i>
+                    <% end %>
+                  </div>
+                  <p><strong>
+                  <%= b.user.first_name %>
+                  <%= b.user.last_name %>
+                  </p></strong>
+                  <p><%= b.description %></p>
+                  <%= render "likes/like", spot: @spot, review: b %>
+                </div>
+              <%end%>
+            <%else%>
+              <% @spot.reviews.reverse.each do |b|%>
+                  <div class="review_box review_box-full" id="<%=b.id%>">
                     <div class="badge">
                       <% b.rating.to_i.times do %>
-                     <i class="fas fa-camera"></i>
+                      <i class="fas fa-camera"></i>
                       <% end %>
                     </div>
-
                         <p><strong>
                         <%= b.user.first_name %>
                         <%= b.user.last_name %>
                         </p></strong>
                         <p class="review_descripition"><%= b.description %></p>
-
-    
                   <%= render "likes/like", spot: @spot, review: b %>
- 
                 </div>
-          <%end%>
+              <%end%>
+            <%end%>
         </div>
     </div>
   </div>
