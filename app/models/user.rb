@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :reports
   has_many :favorites
+  has_many :likes
   has_one_attached :photo
 end

@@ -8,7 +8,7 @@ const showButton = () => {
     up.classList.add('show');
     // console.log(event);
     // console.log(event.srcElement.scrollingElement.scrollTop);
-    // const height = event.srcElement.scrollingElement.scrollTop;
+    const height = event.srcElement.scrollingElement.scrollTop;
     const footer = document.querySelector('footer');
     // console.log(height);
     const diff = (height - footer.offsetHeight);
