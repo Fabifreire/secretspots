@@ -4,10 +4,13 @@
 
   <div class="horizontal">
     <div class="scroll">
-      <% if @spot.photos.attached? %>
+      <% if @spot.photos.count > 1 %>
         <% @spot.photos.each do |photo|%>
           <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
         <% end %>
+      <% elsif @spot.photos.count === 1%>
+      <% photo = @spot.photos.sample%>
+       <%= cl_image_tag photo.key, class: 'spot_img' %>
       <% else %>
         <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
       <% end %>
