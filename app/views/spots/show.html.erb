@@ -4,12 +4,12 @@
 
   <div class="horizontal">
     <div class="scroll">
-      <% if @spot.photos.count > 1 %>
-        <% @spot.photos.each do |photo|%>
+      <% if @pictures.count > 1 %>
+        <% @pictures.each do |photo|%>
           <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
         <% end %>
-      <% elsif @spot.photos.count === 1%>
-      <% photo = @spot.photos.sample%>
+      <% elsif @pictures.count === 1%>
+      <% photo = @pictures.sample%>
        <%= cl_image_tag photo.key, class: 'spot_img' %>
       <% else %>
         <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
@@ -46,13 +46,13 @@
 <br>
 <h3 class="card-link">Reviews</h3>
   <% if @spot.reviews.empty? %>
-    <p>Sorry... this spot has not been reviewd yet.<br>
+    <p>Sorry... this spot has not been reviewed yet.<br>
     Be the first.</p>
 
   <% else %>
-  <div class="horizontal">
+  <div class="horizontal" id="reviews">
         <div class="scroll">
-            <% @spot.reviews.each do |b|%>
+            <% @spot.reviews.reverse.each do |b|%>
             <div class="review_box">
 
                     <div class="badge">

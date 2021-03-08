@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review.spot = @spot
     @review.user = current_user
     if @review.save
-      redirect_to spot_path(@spot)
+      redirect_to spot_path(@spot, anchor: :reviews)
     else
       render "new"
     end
@@ -23,7 +23,7 @@ end
   private
 
   def reviews_params
-    params.require(:review).permit(:description, :rating, :spot_id, :user_id)
+    params.require(:review).permit(:description, :rating, :spot_id, :user_id, photos: [] )
   end
 
   def find_spot
