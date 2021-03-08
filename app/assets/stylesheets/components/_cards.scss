@@ -115,7 +115,9 @@
   flex-wrap: wrap;
   padding: 1rem;
   word-wrap: break-word;
-
+  &-full {
+    width: 100%;
+  }
 }
 
 
