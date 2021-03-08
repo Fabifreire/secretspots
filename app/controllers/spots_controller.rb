@@ -71,7 +71,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @spot.user = current_user
     @spot.destroy
-    redirect_to spots_path
+    redirect_to dashboard_path
     end
 
 	private
