@@ -12,7 +12,7 @@
       <% photo = @spot.photos.sample%>
        <%= cl_image_tag photo.key, class: 'spot_img' %>
       <% else %>
-        <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+        <%= image_tag "spot.jpg", class: 'spot_img'%>
       <% end %>
     </div>
   </div>
@@ -50,10 +50,10 @@
     Be the first.</p>
 
   <% else %>
-  <div class="horizontal">
+  <div class="horizontal" id="revews">
         <div class="scroll">
-            <% @spot.reviews.each do |b|%>
-            <div class="review_box">
+            <% @reviews.each do |b|%>
+            <div class="review_box" id="<%= b.id%>">
 
                     <div class="badge">
                       <% b.rating.to_i.times do %>
@@ -66,6 +66,10 @@
                         <%= b.user.last_name %>
                         </p></strong>
                         <p><%= b.description %></p>
+
+    
+                  <%= render "likes/like", spot: @spot, review: b %>
+ 
                 </div>
           <%end%>
         </div>

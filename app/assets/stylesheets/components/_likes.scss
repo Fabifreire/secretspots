@@ -1,0 +1,27 @@
+.likes {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.likes_total {
+  font-weight: 200;
+  color: $lightblue;
+  font-size: 0.75rem;
+  @include reset-link;
+  margin-right: 0.25rem; 
+}
+
+
+#thumb {
+  @include reset-link;
+  color: $lightblue;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+
+.dislike {
+  @include reset-link;
+}
+
