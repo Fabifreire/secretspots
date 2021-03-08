@@ -115,9 +115,12 @@
   flex-wrap: wrap;
   padding: 1rem;
   word-wrap: break-word;
-
+  position: relative;
 }
-
+.review_descripition {
+  // margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
 
 .booking {
   width: 110%;

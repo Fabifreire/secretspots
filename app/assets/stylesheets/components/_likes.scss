@@ -3,12 +3,14 @@
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
+  position: absolute;
+  bottom: 1rem;
 }
 
 .likes_total {
   font-weight: 200;
   color: $lightblue;
-  font-size: 0.75rem;
+  font-size: 1rem;
   @include reset-link;
   margin-right: 0.25rem; 
 }
@@ -17,7 +19,7 @@
 #thumb {
   @include reset-link;
   color: $lightblue;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-right: 0.25rem;
 }
 
