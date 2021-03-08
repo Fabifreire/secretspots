@@ -3,18 +3,26 @@
 </div>
 
   <div class="horizontal">
-    <div class="scroll">
+    <div class="scroll" id="pictures_list">
       <% if @pictures.count > 1 %>
         <% @pictures.each do |photo|%>
-          <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
+          <div class="picture_dot gallery" style="background-image: url('<%= cl_image_path photo.key %>')"> </div>
+        <%#= cl_image_tag photo.key, class: 'spot_img gallery' %>
         <% end %>
       <% elsif @pictures.count === 1%>
-      <% photo = @pictures.sample%>
-       <%= cl_image_tag photo.key, class: 'spot_img' %>
+        <% photo = @pictures.sample%>
+        <%= cl_image_tag photo.key, class: 'spot_img' %> 
       <% else %>
-        <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+       <%= image_tag "spot.jpg", class: 'spot_img' %>
       <% end %>
     </div>
+      <% unless @pictures.count < 1 %>
+        <div class="pagination">
+          <% @pictures.count.times do%>
+            <div class="dot"></div>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 
   <div class="container-nomargin">
