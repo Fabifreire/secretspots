@@ -2,7 +2,7 @@ class Spot < ApplicationRecord
   CATEGORIES = %w[monument mirador panoramic beach bay cliff]
   belongs_to :user
   has_many :reviews, dependent: :destroy
-  has_many :reports, dependent: :destroy
+  has_many :reports, as: :reportable, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many_attached :photos
   validates :category, inclusion: { in: CATEGORIES,

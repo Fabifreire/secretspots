@@ -49,6 +49,9 @@ class SpotsController < ApplicationController
     if @user
       @favorites = @user.favorites
     end
+
+    @report = @spot.reports.new
+
 	end
 
   def new
@@ -75,7 +78,11 @@ class SpotsController < ApplicationController
     # redirect_to spot_path(@spot)
     if @spot.user == current_user || current_user.moderator?
       @spot.update(spots_params)
+      if current_user.moderator?
+        redirect_to dashboard_path(anchor: :upcoming)
+      else
       redirect_to spot_path(@spot)
+      end
      else
       flash.now[:alert] = "Sorry, you dont have that permission."
       # redirect_to spot_path(@spot)
@@ -88,7 +95,7 @@ class SpotsController < ApplicationController
     if current_user
       if @spot.user == current_user || current_user.moderator?
       @spot.destroy
-      redirect_to spots_path
+      redirect_to dashboard_path(anchor: :upcoming)
       # redirect_back(fallback_location: root_path)
 
       else

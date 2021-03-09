@@ -23,30 +23,45 @@
 </div>
 
 
-<div class="horizontal">
+<div class="horizontal" id="upcoming">
           
-  <h3 class="spot_name-blue">Upcoming duties: tot <%= @upcoming_duty.count%></h3>
+  <h3 class="spot_name-blue" >Upcoming duties: tot <%= @upcoming_duty.count%></h3>
     <% if @upcoming_duty.any?%>
       <div class="scroll">
       <% @upcoming_duty.reverse.each do |d|%>
         <div class="report_box" id="report_id_<%=d.id%>">
           <p class="spot_name-blue">Report #<%=d.id%></p>
-          <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
-          <p class="spot_text"><strong>Content: </strong><%= d.description%></p>
-          <p class="spot_text"><strong>Filed by: </strong><%= d.user.first_name.capitalize%> <%= d.user.last_name.capitalize%></p>
           <p class="spot_text"><strong>Intervention at: </strong>
-          <%= link_to spot_path(d.spot), class: 'btn-small' do%>
-          <span><%=d.spot.name%></span>
-          <i class="fas fa-exclamation-triangle"></i>
+          <% if d.reportable_type === 'Spot' %>
+            <%= link_to spot_path(d.reportable_id), class: 'btn-small' do%>
+              <span>Item <%=Spot.find(d.reportable_id).id%></span>
+              <i class="fas fa-exclamation-triangle"></i>
+            <%end%>
+          <%elsif d.reportable_type === 'Review'%>
+            <% rev = Review.find(d.reportable_id)%>
+           <%= link_to spot_path(rev.spot, anchor: "review_id_#{rev.id}"), class: 'btn-small' do%>
+              <span>Item<%=Review.find(d.reportable_id).id%></span>
+              <i class="fas fa-exclamation-triangle"></i>
+            <%end%>
           <%end%>
           </p>
+          <p class="spot_text"><strong>Type: </strong><%= d.reportable_type%></p>
+          <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
+          <p class="spot_text"><strong>Content Report: </strong><%= d.description%></p>
+          <p class="spot_text"><strong>Filed by: </strong><%= User.find(d.user_id).first_name%> <%= d.user.last_name.capitalize%></p>
+            <% if d.reportable_type === 'Spot' %>
+            <%= link_to 'Go check >', spot_path(d.reportable_id), class: 'btn-small' %>
+          <%elsif d.reportable_type === 'Review'%>
+            <% rev = Review.find(d.reportable_id)%>
+           <%= link_to 'Go check >', spot_path(rev.spot, anchor: "review_id_#{rev.id}"), class: 'btn-small' %>
+          <%end%>
           <%= render 'reports/update', report: d %>
         </div>
       <%end%>
     </div>
     <%else%>
-     <p class="center">You don't have conflicts to solve, rest and enjoy the app</p>
-    <%= link_to 'browse', spots_path, class: 'btn' %>
+     <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
+    <%#= link_to 'Browse some secrets', spots_path, class: 'btn-small' %>
     <%end%>
 
 </div>
@@ -63,10 +78,10 @@
       <% @done_duty.reverse.each do |d|%>
         <div class="report_box report_box-done" id="report_id_<%=d.id%>">
           <p class="spot_name-blue">Report #<%=d.id%></p>
+          <p class="spot_text"><strong>Type: </strong><%= d.reportable_type%></p>
           <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
           <p class="spot_text"><strong>Content: </strong><%= d.description%></p>
-          <p class="spot_text"><strong>Filed by: </strong><%= d.user.first_name.capitalize%> <%= d.user.last_name.capitalize%></p>
-          <p class="spot_text"><strong>Intervention at: </strong><%= d.spot.name %></p>
+          <p class="spot_text"><strong>Filed by: </strong><%= User.find(d.user_id).first_name%> <%= d.user.last_name.capitalize%></p>
           <div class="report_actions">
           <i class="fas fa-check-circle"></i>
           </div>

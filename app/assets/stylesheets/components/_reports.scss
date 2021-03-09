@@ -1,0 +1,9 @@
+.reports_btns {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  margin-top: 1rem;
+  & i {
+    font-size: 1.25rem;
+  }
+}

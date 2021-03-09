@@ -65,13 +65,12 @@ ActiveRecord::Schema.define(version: 2021_03_09_144449) do
     t.string "description"
     t.string "category"
     t.bigint "user_id", null: false
-    t.bigint "review_id", null: false
-    t.bigint "spot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "done", default: false
-    t.index ["review_id"], name: "index_reports_on_review_id"
-    t.index ["spot_id"], name: "index_reports_on_spot_id"
+    t.string "reportable_type"
+    t.bigint "reportable_id"
+    t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -124,8 +123,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_144449) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
-  add_foreign_key "reports", "reviews"
-  add_foreign_key "reports", "spots"
   add_foreign_key "reports", "users"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"

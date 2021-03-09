@@ -11,6 +11,9 @@ class PagesController < ApplicationController
     @reports = Report.all
     @upcoming_duty = @reports.where(done: false)
     @done_duty = @reports.where(done: true)
+    # @parent = parent
+
+    # reports
 
   end
 
@@ -40,4 +43,13 @@ class PagesController < ApplicationController
     end
 
   end
+
+  private
+#   def parent
+#     if params[:spot_id]
+#       Spot.find params[:spot_id]
+#     else
+#       Review.find params[:review_id]
+#     end
+#  end
 end

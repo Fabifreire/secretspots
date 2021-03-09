@@ -23,4 +23,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :spots, :reviews do
+    resources :reports, only: %i[new create]
+  end
+  resources :reports, only: %i[destroy]
 end
