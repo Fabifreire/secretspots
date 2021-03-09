@@ -19,17 +19,14 @@ class ReviewsController < ApplicationController
   
   def destroy
     @review = Review.find(params[:id])
-     raise
-     # if @review.user == current_user || current_user.moderator?
+     if current_user.moderator?
       @review.destroy
       redirect_to spot_path(@review.spot)
-     #else
-      #flash.now[:alert] = "Sorry, you dont have that permission."
-     # render "spots/show"
-     #end
+     else
+      flash.now[:alert] = "Sorry, you dont have that permission."
+      render "spots/show"
+     end
   end
-
-end
 
   private
 

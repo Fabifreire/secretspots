@@ -11,13 +11,13 @@
 # Like.destroy_all
 # User.destroy_all
 puts "creating moderator"
-User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mrmoderator@hotmail.com", password:"mod4life", moderator: true)
+User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mrmoderator@hotmail.com", password:"123456", moderator: true)
 # puts "generating 5 users"
-# 5.times do
-#   puts "."
-#   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Name.name, email: Faker::Internet.email, password: '123456')
-# end
-# puts "done"
+#5.times do
+  #puts "."
+  #User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Name.name, email: Faker::Internet.email, password: '123456')
+#end
+#puts "done"
 
 # puts "generating 10 spots"
 
