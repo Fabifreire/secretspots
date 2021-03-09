@@ -84,13 +84,15 @@ class SpotsController < ApplicationController
 
     def destroy
     @spot = Spot.find(params[:id])
-     if @spot.user == current_user || current_user.moderator?
+    if current_user
+      if @spot.user == current_user || current_user.moderator?
       @spot.destroy
       redirect_to dashboard_path
-     else
+      else
       flash.now[:alert] = "Sorry, you dont have that permission."
       redirect_to dashboard_path
-     end
+      end
+    end
     end
 
 	private
