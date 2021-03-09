@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :fetch_spot, only: :show
+  before_action :fetch_spot, only:  %i[update show]
 
   def index
     @spots = Spot.all.order(created_at: :desc)
@@ -27,13 +27,24 @@ class SpotsController < ApplicationController
       @spots = @spots.where(category: params[:category])
     end
     if @spots.empty?
-    flash.now[:alert] = "Sorry, we could not find what you're looking for."
+      flash.now[:alert] = "Sorry, we could not find what you're looking for."
     end
   end
 
   def show
     @spot = Spot.find(params[:id])
     @user = current_user
+    @reviews = @spot.reviews
+    @pictures = @spot.photos
+    @spot.reviews.each do |r|
+      if r.photos.attached?
+        r.photos.each do |picture|
+          @pictures << picture
+        end
+        @pictures
+      end
+    end
+
 
     if @user
       @favorites = @user.favorites
@@ -65,16 +76,26 @@ class SpotsController < ApplicationController
    def update
     # @spot.update(spots_params)
     # redirect_to spot_path(@spot)
-    @spot = Spot.find(params[:id])
-    @spot.update(spots_params)
-    redirect_to spot_path(@spot)
+    if @spot.user == current_user || current_user.moderator?
+      @spot.update
+      redirect_to spot_path(@spot)
+     else
+      flash.now[:alert] = "Sorry, you dont have that permission."
+      redirect_to spot_path(@spot)
+     end
   end
 
     def destroy
     @spot = Spot.find(params[:id])
-    @spot.user = current_user
-    @spot.destroy
-    redirect_to dashboard_path
+    if current_user
+      if @spot.user == current_user || current_user.moderator?
+      @spot.destroy
+      redirect_to dashboard_path
+      else
+      flash.now[:alert] = "Sorry, you dont have that permission."
+      redirect_to dashboard_path
+      end
+    end
     end
 
 	private

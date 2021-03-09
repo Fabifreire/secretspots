@@ -3,25 +3,34 @@
 </div>
 
   <div class="horizontal">
-    <div class="scroll">
-      <% if @spot.photos.count > 1 %>
-        <% @spot.photos.each do |photo|%>
-          <%= cl_image_tag photo.key, class: 'spot_img gallery' %>
+    <div class="scroll" id="pictures_list">
+      <% if @pictures.count > 1 %>
+        <% @pictures.each do |photo|%>
+          <div class="picture_dot gallery" style="background-image: url('<%= cl_image_path photo.key %>')"> </div>
+        <%#= cl_image_tag photo.key, class: 'spot_img gallery' %>
         <% end %>
-      <% elsif @spot.photos.count === 1%>
-      <% photo = @spot.photos.sample%>
-       <%= cl_image_tag photo.key, class: 'spot_img' %>
+      <% elsif @pictures.count === 1%>
+        <% photo = @pictures.sample%>
+        <%= cl_image_tag photo.key, class: 'spot_img' %>
       <% else %>
-        <%= image_tag "spot.jpg", class: 'spot_img gallery'%>
+       <%= image_tag "spot.jpg", class: 'spot_img' %>
       <% end %>
     </div>
+      <% if @pictures.count > 1 %>
+        <div class="pagination">
+          <% @pictures.count.times do%>
+            <div class="dot"></div>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 
   <div class="container-nomargin">
 
         <div class="spot_content">
-
-          <%= render "favorites/add_to_fav", spot: @spot %>
+          <div class="favorite">
+            <%= render "favorites/add_fav", spot: @spot %>
+          </div>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
 
@@ -42,35 +51,71 @@
 
           <p class="spot_name-blue">Description</p>
           <p class="spot_text"> <%= @spot.description%> </p>
+          <% if current_user %>
+            <% if @spot.user == current_user || current_user.moderator? %>
+             <%= render "moderator_destroy", spot: @spot %>
+           <% end %>
+          <% end %>
            <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
 <br>
 <h3 class="card-link">Reviews</h3>
   <% if @spot.reviews.empty? %>
-    <p>Sorry... this spot has not been reviewd yet.<br>
+    <p>Sorry... this spot has not been reviewed yet.<br>
     Be the first.</p>
 
   <% else %>
-  <div class="horizontal">
-        <div class="scroll">
-            <% @spot.reviews.each do |b|%>
-            <div class="review_box">
 
+  <div class="horizontal" id="reviews">
+        <div class="scroll">
+            <% if @spot.reviews.reverse.count > 1%>
+              <% @spot.reviews.reverse.each do |b|%>
+                <div class="review_box" id="<%=b.id%>">
+                  <div class="badge">
+                    <% b.rating.to_i.times do %>
+                  <i class="fas fa-camera"></i>
+                    <% end %>
+                  </div>
+                  <p><strong>
+                  <%= b.user.first_name %>
+                  <%= b.user.last_name %>
+                  </p></strong>
+                  <p class="review_descripition"><%= b.description %></p>
+                  <%= render "likes/like", spot: @spot, review: b %>
+                  <% if current_user %>
+                    <% if current_user.moderator? %>
+                      <%= render "reviews/moderator_destroy", spot: @spot, review: b %>
+                    <% end %>
+                  <% end %>
+                </div>
+              <%end%>
+            <%else%>
+              <% @spot.reviews.reverse.each do |b|%>
+                  <div class="review_box review_box-full" id="review_<%=b.id%>">
                     <div class="badge">
                       <% b.rating.to_i.times do %>
-                     <i class="fas fa-camera"></i>
+                      <i class="fas fa-camera"></i>
                       <% end %>
                     </div>
+                    <p><strong>
+                    <%= b.user.first_name %>
+                    <%= b.user.last_name %>
+                    </p></strong>
+                    <p><%= b.description %></p>
+                    <div class="action">
+                    <%= link_to 'report', new_review_report_path(b), class: 'btn' %>
+                    </div>
+                    <p><strong><%=b.user.first_name %> <%= b.user.last_name %></strong></p>
+                    <p class="review_descripition">here class<%= b.description %></p>
 
-                        <p><strong>
-                        <%= b.user.first_name %>
-                        <%= b.user.last_name %>
-                        </p></strong>
-                        <p><%= b.description %></p>
-                        <div class="action">
-                        <%= link_to 'report', new_review_report_path(b), class: 'btn' %>
-                        </div>
+                  <%= render "likes/like", spot: @spot, review: b %>
+                  <% if current_user %>
+                    <% if current_user.moderator? %>
+                      <%= render "reviews/moderator_destroy", spot: @spot, review: b %>
+                    <% end %>
+                  <% end %>
                 </div>
-          <%end%>
+              <%end%>
+            <%end%>
         </div>
     </div>
   </div>

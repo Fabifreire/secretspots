@@ -59,7 +59,7 @@
               <%= link_to edit_spot_path(s), class: 'actions_btn' do %>
               <i class="fas fa-edit"></i>
             <%end%>
-          <%= link_to spot_path(s), class: 'actions_btn', method: :delete, data: {confirm: 'Do you want to delete the bench?'} do %>
+          <%= link_to spot_path(s), class: 'actions_btn', method: :delete, data: {confirm: 'Do you want to delete the review?'} do %>
             <i class="fas fa-trash-alt"></i>
           <%end%>
           </div>
@@ -94,9 +94,9 @@
 
 <div class="horizontal">
   <h3 class="spot_name-blue">Favourites</h3>
-  <% if @favorites.any?%>
+  <% if @favorites.reverse.any?%>
   <div class="scroll">
-    <% @favorites.each do |s|%>
+    <% @favorites.reverse.each do |s|%>
     <div class="dashboard_card">
 
           <% if s.spot.photos.attached? %>
@@ -123,15 +123,16 @@
           <% end %>
           </div>
           <div class="actions">
-          <%= link_to new_spot_review_path(s) , class: 'actions_btn' do %>
+          <%= link_to new_spot_review_path(s.spot) , class: 'actions_btn' do %>
           <i class="fas fa-comment-medical"></i>
           <%end%>
 
           </div>
 
         </div>
-
-          <%= render "favorites/add_fav", spot: s.spot %>
+          <div id="favorite">
+            <%= render "favorites/add_fav", spot: s.spot %>
+          </div>
     </div>
   <% end%>
   </div>

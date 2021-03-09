@@ -1,0 +1,25 @@
+#favorite {
+  position: absolute;
+  top: 200px;
+  right: 10%;
+  & a {
+    color: $lightaction;
+    @include reset-link;
+  }
+  & i {
+    // font-weight: 600;
+    font-size: 2rem;
+  }
+}
+
+.favorite {
+  // font-weight: 400;
+  float: right;
+  & a {
+    color: $lightaction;
+    @include reset-link;
+  } 
+  & i {
+    font-size: 2rem;
+  }
+}
