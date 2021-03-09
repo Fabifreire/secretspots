@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard'
   get 'map', to: 'pages#map'
+  resources :reports, only: %i[update]
   resources :spots do
     resources :reviews, only: %i[new create] do
       resources :likes, only: %i[create] do

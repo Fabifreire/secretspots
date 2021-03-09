@@ -13,7 +13,8 @@
       <div class="profile_media">
         <%= user_image_tag @user, class: 'profile_pic'%>
         <%= link_to edit_user_registration_path do%>
-          <i class="fas fa-certificate float-right"></i>
+          <%# <i class="fas fa-certificate float-right"></i> %>
+          <i class="fas fa-award float-right"></i>
         <% end%>
       </div>
     </div>
@@ -39,6 +40,7 @@
           <i class="fas fa-exclamation-triangle"></i>
           <%end%>
           </p>
+          <%= render 'reports/update', report: d %>
         </div>
       <%end%>
     <%else%>
@@ -54,7 +56,7 @@
     <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
 </div>
 
-<div class="horizontal">
+<div class="horizontal" id="done">
   <h3 class="spot_name-blue">Successfull interventions</h3>
   <div class="scroll">
     <% if @done_duty.any?%>
@@ -65,6 +67,9 @@
           <p class="spot_text"><strong>Content: </strong><%= d.description%></p>
           <p class="spot_text"><strong>Filed by: </strong><%= d.user.first_name.capitalize%> <%= d.user.last_name.capitalize%></p>
           <p class="spot_text"><strong>Intervention at: </strong><%= d.spot.name %></p>
+          <div class="report_actions">
+          <i class="fas fa-check-circle"></i>
+          </div>
         </div>
       <%end%>
     <%else%>
