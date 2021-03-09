@@ -8,10 +8,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
  category = %w[monument mirador panoramic beach bay cliff]
 puts "cleaning the database..."
+Report.destroy_all
 Like.destroy_all
 Review.destroy_all
 Spot.destroy_all
-User.destroy_all
+# User.destroy_all
 puts "creating moderator"
 User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mrmoderator@hotmail.com", password:"123456", moderator: true)
 puts "generating 5 users"
@@ -46,5 +47,12 @@ puts "Success!"
 puts "generating 100 likes"
 100.times do
   Like.create(user: User.all.sample, review: Review.all.sample)
+end
+puts "Success!"
+
+puts "generating 20 reports"
+20.times do
+  Report.create(user: User.all.sample, review: Review.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote )
+puts "."
 end
 puts "Success!"

@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :fetch_spot, only:  %i[update show]
+  before_action :fetch_spot, only: %i[update show]
 
   def index
     @spots = Spot.all.order(created_at: :desc)
