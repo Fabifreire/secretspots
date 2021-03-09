@@ -51,6 +51,11 @@
 
           <p class="spot_name-blue">Description</p>
           <p class="spot_text"> <%= @spot.description%> </p>
+          <% if current_user %>
+            <% if @spot.user == current_user || current_user.moderator? %>
+             <%= render "moderator_destroy", spot: @spot %>
+           <% end %>
+          <% end %>
            <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
 <br>
 <h3 class="card-link">Reviews</h3>
@@ -76,6 +81,11 @@
                   </p></strong>
                   <p class="review_descripition"><%= b.description %></p>
                   <%= render "likes/like", spot: @spot, review: b %>
+                  <% if current_user %>
+                    <% if current_user.moderator? %>
+                      <%= render "reviews/moderator_destroy", spot: @spot, review: b %>
+                    <% end %>
+                  <% end %>
                 </div>
               <%end%>
             <%else%>
@@ -90,6 +100,11 @@
                         <p class="review_descripition">here class<%= b.description %></p>
                       
                   <%= render "likes/like", spot: @spot, review: b %>
+                  <% if current_user %>
+                    <% if current_user.moderator? %>
+                      <%= render "reviews/moderator_destroy", spot: @spot, review: b %>
+                    <% end %>
+                  <% end %>
                 </div>
               <%end%>
             <%end%>

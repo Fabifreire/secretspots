@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(reviews_params)
+    
     @review.spot = @spot
     @review.user = current_user
     if @review.save
@@ -14,8 +15,18 @@ class ReviewsController < ApplicationController
     else
       render "new"
     end
-
+  end
+  
   def destroy
+    @review = Review.find(params[:id])
+     raise
+     # if @review.user == current_user || current_user.moderator?
+      @review.destroy
+      redirect_to spot_path(@review.spot)
+     #else
+      #flash.now[:alert] = "Sorry, you dont have that permission."
+     # render "spots/show"
+     #end
   end
 
 end

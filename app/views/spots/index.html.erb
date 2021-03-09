@@ -33,8 +33,10 @@
           <%= render "favorites/add_fav", spot: spot %>
         </div>
     </div>
-    <% if spot.user == current_user || current_user.moderator? %>
-      <%= render "moderator_destroy", spot: spot %>
+    <% if current_user %>
+      <% if spot.user == current_user || current_user.moderator? %>
+        <%= render "moderator_destroy", spot: spot %>
+     <% end %>
     <% end %>
   <% end %>
 </div>
