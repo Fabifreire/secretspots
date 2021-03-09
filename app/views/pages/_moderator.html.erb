@@ -1,7 +1,7 @@
 <div class="container">
   <div class="moderator_logo">
     <%= image_tag 'police_car.svg' %>
-  <p>Welcome to: <br> <span class="small-text">Secretspot police</span></p>
+  <p>Welcome to: <br> <span class="small-text">Secretspot Police</span></p>
   </div>
     <div class="profile_card profile_card-moderator">
     <div class="profile_content">
@@ -60,8 +60,11 @@
       <%end%>
     </div>
     <%else%>
-     <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
-    <%#= link_to 'Browse some secrets', spots_path, class: 'btn-small' %>
+      <% if @upcoming_duty.any?%>
+        <p class="center">Ya better get to work!</p>
+      <%else%>
+        <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
+      <%end%>
     <%end%>
 
 </div>

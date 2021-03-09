@@ -25,19 +25,20 @@ div class="container">
   </div>
   <div class="container-nomargin">
         <div class="spot_content">
-          <div class="mod_actions">
-          <p>As a moderator you can perform this actions on this spot:</p>
             <% if current_user %>
               <% if current_user.moderator? %>
+            <div class="mod_actions">
+              <p>As a moderator you can perform this actions on this spot:</p>
                 <%= render "moderator_destroy", spot: @spot %>
+            </div>
               <% end %>
             <% end %>
-          </div>
-
-          <% unless current_user.moderator?%>
-          <div class="favorite">
-            <%= render "favorites/add_fav", spot: @spot %>
-          </div>
+          <% if current_user%>
+            <% unless current_user.moderator?%>
+            <div class="favorite">
+              <%= render "favorites/add_fav", spot: @spot %>
+            </div>
+            <%end%>
           <%end%>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
@@ -48,11 +49,12 @@ div class="container">
           <% end %>
           </div>
 
-          <% unless current_user.moderator?%>
-            <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+            <% if current_user.blank? || !current_user.moderator? %>
+              <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
 
-              <i class="fas fa-directions"></i>
-            <% end %>
+                <i class="fas fa-directions"></i>
+              <% end %>
+
           <%end%>
           <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
           <br>
