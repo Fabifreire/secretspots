@@ -26,8 +26,8 @@
 <div class="horizontal">
           
   <h3 class="spot_name-blue">Upcoming duties: tot <%= @upcoming_duty.count%></h3>
-  <div class="scroll">
     <% if @upcoming_duty.any?%>
+      <div class="scroll">
       <% @upcoming_duty.reverse.each do |d|%>
         <div class="report_box" id="report_id_<%=d.id%>">
           <p class="spot_name-blue">Report #<%=d.id%></p>
@@ -43,11 +43,11 @@
           <%= render 'reports/update', report: d %>
         </div>
       <%end%>
+    </div>
     <%else%>
      <p class="center">You don't have conflicts to solve, rest and enjoy the app</p>
     <%= link_to 'browse', spots_path, class: 'btn' %>
     <%end%>
-  </div>
 
 </div>
 
@@ -58,8 +58,8 @@
 
 <div class="horizontal" id="done">
   <h3 class="spot_name-blue">Successfull interventions</h3>
-  <div class="scroll">
     <% if @done_duty.any?%>
+    <div class="scroll">
       <% @done_duty.reverse.each do |d|%>
         <div class="report_box report_box-done" id="report_id_<%=d.id%>">
           <p class="spot_name-blue">Report #<%=d.id%></p>
@@ -72,12 +72,67 @@
           </div>
         </div>
       <%end%>
-    <%else%>
-     <p class="center">You don't have conflicts to solve, rest and enjoy the app</p>
-    <%= link_to 'browse', spots_path, class: 'btn' %>
-    <%end%>
   </div>
+    <%else%>
+     <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
+    <%#= link_to 'browse', spots_path, class: 'btn' %>
+    <%end%>
 
+</div>
+
+<div class="container-nomargin">
+    <p class="center">Explore secrets!</p>
+    <%= link_to 'Browse', spots_path, class: 'btn' %>
+</div>
+
+<div class="horizontal">
+  <h3 class="spot_name-blue">Favourites</h3>
+  <% if @favorites.reverse.any?%>
+  <div class="scroll">
+    <% @favorites.reverse.each do |s|%>
+    <div class="dashboard_card">
+
+          <% if s.spot.photos.attached? %>
+            <%= link_to spot_path(s.spot) do%>
+              <% photo = s.spot.photos.sample%>
+              <%= cl_image_tag photo.key, class: 'spot_img' %>
+            <% end %>
+            <% else %>
+            <%= link_to spot_path(s.spot) do%>
+              <%= image_tag "spot.jpg", class: 'spot_img'%>
+            <% end %>
+          <% end %>
+        <div class="spot_content">
+          <%= link_to s.spot.name, spot_path(s.spot), class: 'spot_name' %>
+          <p class="spot_text"><strong>Address: </strong><%= s.spot.address%></p>
+          <%#= link_to "https://www.google.com/maps/place/#{s.spot.address}/@#{s.spot.latitude},#{s.spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+            <%# <i class="fas fa-directions"></i> %>
+          <%#end%>
+          <p class="spot_text"><strong>Category: </strong><%= s.spot.category.capitalize%></p>
+          <div>
+          <span>Rating:</span>
+          <% avg_rating(s.spot).times do %>
+          <i class="fas fa-camera"></i>
+          <% end %>
+          </div>
+          <div class="actions">
+          <%= link_to new_spot_review_path(s.spot) , class: 'actions_btn' do %>
+          <i class="fas fa-comment-medical"></i>
+          <%end%>
+
+          </div>
+
+        </div>
+          <div id="favorite">
+            <%= render "favorites/add_fav", spot: s.spot %>
+          </div>
+    </div>
+  <% end%>
+  </div>
+  <%else%>
+    <p class="center">You don't have any favourites, browse for secrets!</p>
+    <%= link_to 'Browse', spots_path, class: 'btn' %>
+  <%end%>
 </div>
 
 <div class="container-logout">

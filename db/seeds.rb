@@ -23,25 +23,24 @@ puts "generating 5 users"
 end
 puts "done"
 
-# puts "generating 10 spots"
+puts "generating 10 spots"
 
- Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Cascais", category: category.sample)
- Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Carcavelos", category: category.sample)
- Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Parede", category: category.sample)
- Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Oeiras", category: category.sample)
- Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Lisboa", category: category.sample)
-#Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "barcelona", category: category.sample)
+#  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Carcavelos", category: category.sample)
+#  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Parede", category: category.sample)
+#  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Oeiras", category: category.sample)
+#  Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Lisboa", category: category.sample)
+# Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "barcelona", category: category.sample)
 # Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Madrid", category: category.sample)
 # Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Paris", category: category.sample)
 # Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Rome", category: category.sample)
 # Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "London", category: category.sample)
 # Spot.create(user: User.all.sample, name: Faker::Dessert.flavor, description: Faker::Quotes::Shakespeare.hamlet_quote, address: "Rua do Instituto Bacteriológico 8, Lisboa", category: category.sample)
-# puts "Success!"
+puts "Success!"
 
-puts "generating 30 reviews"
-30.times do
+ puts "generating 30 reviews"
+ 30.times do
   Review.create(user: User.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote, title: Faker::Name.name, rating: rand(0..5))
-end
+end 
 puts "Success!"
 
 
@@ -51,9 +50,9 @@ puts "generating 100 likes"
 end
 puts "Success!"
 
-puts "generating 20 reports"
-20.times do
-  Report.create(user: User.all.sample, review: Review.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote, done: boolean.sample)
-puts "."
-end
-puts "Success!"
+# puts "generating 20 reports"
+# 20.times do
+#   Report.create(user: User.all.sample, review: Review.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote, done: boolean.sample)
+# puts "."
+# end
+# puts "Success!"

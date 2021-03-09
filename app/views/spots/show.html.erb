@@ -28,9 +28,20 @@
   <div class="container-nomargin">
 
         <div class="spot_content">
+          <div class="mod_actions">
+          <p>As a moderator you can perform this actions on this spot:</p>
+            <% if current_user %>
+              <% if current_user.moderator? %>
+                <%= render "moderator_destroy", spot: @spot %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <% unless current_user.moderator?%>
           <div class="favorite">
             <%= render "favorites/add_fav", spot: @spot %>
           </div>
+          <%end%>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
 
@@ -41,9 +52,11 @@
           <% end %>
           </div>
 
-          <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+          <% unless current_user.moderator?%>
+            <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
 
-            <i class="fas fa-directions"></i>
+              <i class="fas fa-directions"></i>
+            <% end %>
           <%end%>
           <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
 
@@ -51,6 +64,7 @@
 
           <p class="spot_name-blue">Description</p>
           <p class="spot_text"> <%= @spot.description%> </p>
+
            <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
 <br>
 <h3 class="card-link">Reviews</h3>
@@ -76,6 +90,11 @@
                   </p></strong>
                   <p class="review_descripition"><%= b.description %></p>
                   <%= render "likes/like", spot: @spot, review: b %>
+                  <% if current_user %>
+                    <% if current_user.moderator? %>
+                      <%= render "reviews/moderator_destroy", spot: @spot, review: b %>
+                    <% end %>
+                  <% end %>
                 </div>
               <%end%>
             <%else%>
@@ -90,6 +109,11 @@
                         <p class="review_descripition">here class<%= b.description %></p>
                       
                   <%= render "likes/like", spot: @spot, review: b %>
+                  <% if current_user %>
+                    <% if current_user.moderator? %>
+                      <%= render "reviews/moderator_destroy", review: b %>
+                    <% end %>
+                  <% end %>
                 </div>
               <%end%>
             <%end%>

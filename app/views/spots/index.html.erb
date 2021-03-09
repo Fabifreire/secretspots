@@ -28,16 +28,17 @@
           <% avg_rating(spot).times do %>
             <i class="fas fa-camera"></i>
           <% end %>
+          <% if current_user %>
+            <% if current_user.moderator? %>
+              <%= render "moderator_destroy", spot: spot %>
+            <% end %>
+          <% end %>
         </div>
         <div id="favorite">
           <%= render "favorites/add_fav", spot: spot %>
         </div>
+  
     </div>
-    <%if current_user %>
-      <% if spot.user == current_user || current_user.moderator? %>
-        <%= render "moderator_destroy", spot: spot %>
-      <% end %>
-    <% end %>
   <% end %>
 </div>
 

@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :fetch_spot, only: %i[update show]
+  before_action :fetch_spot, only: %i[update show destroy]
 
   def index
     @spots = Spot.all.order(created_at: :desc)
@@ -74,23 +74,28 @@ class SpotsController < ApplicationController
     # @spot.update(spots_params)
     # redirect_to spot_path(@spot)
     if @spot.user == current_user || current_user.moderator?
-      @spot.update
+      @spot.update(spots_params)
       redirect_to spot_path(@spot)
      else
       flash.now[:alert] = "Sorry, you dont have that permission."
-      redirect_to spot_path(@spot)
+      # redirect_to spot_path(@spot)
+      redirect_back(fallback_location: root_path)
      end
   end
 
     def destroy
-    @spot = Spot.find(params[:id])
+    # @spot = Spot.find(params[:id])
     if current_user
       if @spot.user == current_user || current_user.moderator?
       @spot.destroy
-      redirect_to dashboard_path
+      redirect_to spots_path
+      # redirect_back(fallback_location: root_path)
+
       else
       flash.now[:alert] = "Sorry, you dont have that permission."
-      redirect_to dashboard_path
+      # redirect_to dashboard_path
+      redirect_back(fallback_location: root_path)
+
       end
     end
     end
