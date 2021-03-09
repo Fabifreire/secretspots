@@ -25,12 +25,13 @@
           <p class="spot_text"><strong>Category: </strong><%= spot.category.capitalize%></p>
 
           <span class="spot_text">Rating:</span>
-                <% avg_rating(spot).times do %>
-                  <i class="fas fa-camera"></i>
-                <% end %>
+          <% avg_rating(spot).times do %>
+            <i class="fas fa-camera"></i>
+          <% end %>
         </div>
-
-         <%= render "favorites/add_fav", spot: spot %>
+        <div id="favorite">
+          <%= render "favorites/add_fav", spot: spot %>
+        </div>
     </div>
     <% if spot.user == current_user || current_user.moderator? %>
       <%= render "moderator_destroy", spot: spot %>

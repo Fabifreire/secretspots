@@ -1,0 +1,5 @@
+// alert('hello');
+
+
+
+document.getElementById('fav_button_<%=@spot.id%>').innerHTML = "<%= escape_javascript(render partial: 'favorites/add_fav', locals: { spot: @spot } ) %>";

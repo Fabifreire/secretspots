@@ -44,6 +44,7 @@
     margin-bottom: 0.5rem;
     text-decoration: none;
     text-align: left;
+    padding-right: 2.5rem;
   }
 }
 
@@ -53,25 +54,9 @@
   margin: 0;
   line-height: 1.5rem;
   text-align: left;
+  width: 85%;
 }
 
-#favorite {
-  position: absolute;
-  @include reset-link;
-  top: 200px;
-  right: 10%;
-  color: $action;
-  font-weight: 600;
-  font-size: 2rem;
-}
-
-.favorite {
-  @include reset-link;
-  color: $action;
-  font-weight: 600;
-  font-size: 2rem;
-  float: right;
-}
 
 
 .scroll {
@@ -115,11 +100,15 @@
   flex-wrap: wrap;
   padding: 1rem;
   word-wrap: break-word;
+  position: relative;
   &-full {
     width: 100%;
   }
 }
-
+.review_descripition {
+  // margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+}
 
 .booking {
   width: 110%;

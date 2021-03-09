@@ -30,7 +30,8 @@ const addCurrentLocation = (map) => {
 		fitBoundsOptions: { // OPTIONAL
 			padding: 1, // etc, see https://docs.mapbox.com/mapbox-gl-js/api/#map#fitbounds
 			animate: false, // all AnimateOptions are supported
-			zoom: 12, // all CameraOptions are supported
+			zoom: 12 // all CameraOptions are supported
+      // center: [38.727805168200156, -9.137202772365928]
 		},
 		trackUserLocation: true,
 		showAccuracyCircle: false
@@ -61,7 +62,7 @@ const initMapbox = () => {
         const markers = JSON.parse(mapElement.dataset.markers);
         addMarkersToMap(map, markers)
 
-        fitMapToMarkers(map, markers);
+        // fitMapToMarkers(map, markers);
 
         map.addControl(new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
