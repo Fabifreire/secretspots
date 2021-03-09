@@ -16,6 +16,9 @@
   &-dashboard {
     width: 600px;
   }
+  &-moderator {
+   margin: 0;
+  }
 }
 
 .profile_text {
@@ -70,15 +73,7 @@
   }
 }
 
-.scroll {
- // display: flex;
- // flex-direction: row;
- // flex-wrap: nowrap;
- // overflow-x: auto;
-  // overflow-x: scroll;
-  // overflow-y: hidden;
-  // white-space: nowrap;
-}
+
 
 
 #favorites {

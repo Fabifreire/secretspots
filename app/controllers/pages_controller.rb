@@ -8,6 +8,10 @@ class PagesController < ApplicationController
     @user = current_user
     @spots = @user.spots
     @favorites = @user.favorites
+    @reports = Report.all
+    @upcoming_duty = @reports.where(done: false)
+    @done_duty = @reports.where(done: true)
+
   end
 
   def map

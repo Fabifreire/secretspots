@@ -7,6 +7,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
  category = %w[monument mirador panoramic beach bay cliff]
+ boolean = [true, false]
 puts "cleaning the database..."
 Report.destroy_all
 Like.destroy_all
@@ -52,7 +53,7 @@ puts "Success!"
 
 puts "generating 20 reports"
 20.times do
-  Report.create(user: User.all.sample, review: Review.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote )
+  Report.create(user: User.all.sample, review: Review.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote, done: boolean.sample)
 puts "."
 end
 puts "Success!"

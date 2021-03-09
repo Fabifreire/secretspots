@@ -1,5 +1,78 @@
 <div class="container">
-<div class="small-text">Weclome in Da Secret Spot Police</div>
+  <div class="moderator_logo">
+    <%= image_tag 'police_car.svg' %>
+  <p>Welcome to: <br> <span class="small-text">Secretspot police</span></p>
+  </div>
+    <div class="profile_card profile_card-moderator">
+    <div class="profile_content">
+      <div class="profile_text">
+      <p class="spot_name">Moderator</p>
+      <p class="spot_text"><strong>Username: </strong><%= @user.username%></p>
+      <p class="spot_text"><strong>Email: </strong><%= @user.email%></p>
+      </div>
+      <div class="profile_media">
+        <%= user_image_tag @user, class: 'profile_pic'%>
+        <%= link_to edit_user_registration_path do%>
+          <i class="fas fa-certificate float-right"></i>
+        <% end%>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="horizontal">
+          
+  <h3 class="spot_name-blue">Upcoming duties: tot <%= @upcoming_duty.count%></h3>
+  <div class="scroll">
+    <% if @upcoming_duty.any?%>
+      <% @upcoming_duty.reverse.each do |d|%>
+        <div class="report_box" id="report_id_<%=d.id%>">
+          <p class="spot_name-blue">Report #<%=d.id%></p>
+          <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
+          <p class="spot_text"><strong>Content: </strong><%= d.description%></p>
+          <p class="spot_text"><strong>Filed by: </strong><%= d.user.first_name.capitalize%> <%= d.user.last_name.capitalize%></p>
+          <p class="spot_text"><strong>Intervention at: </strong>
+          <%= link_to spot_path(d.spot), class: 'btn-small' do%>
+          <span><%=d.spot.name%></span>
+          <i class="fas fa-exclamation-triangle"></i>
+          <%end%>
+          </p>
+        </div>
+      <%end%>
+    <%else%>
+     <p class="center">You don't have conflicts to solve, rest and enjoy the app</p>
+    <%= link_to 'browse', spots_path, class: 'btn' %>
+    <%end%>
+  </div>
+
+</div>
+
+<div class="container-nomargin">
+    <p class="center">In the meantime... would you like to share a secret?</p>
+    <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
+</div>
+
+<div class="horizontal">
+  <h3 class="spot_name-blue">Successfull interventions</h3>
+  <div class="scroll">
+    <% if @done_duty.any?%>
+      <% @done_duty.reverse.each do |d|%>
+        <div class="report_box report_box-done" id="report_id_<%=d.id%>">
+          <p class="spot_name-blue">Report #<%=d.id%></p>
+          <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
+          <p class="spot_text"><strong>Content: </strong><%= d.description%></p>
+          <p class="spot_text"><strong>Filed by: </strong><%= d.user.first_name.capitalize%> <%= d.user.last_name.capitalize%></p>
+          <p class="spot_text"><strong>Intervention at: </strong><%= d.spot.name %></p>
+        </div>
+      <%end%>
+    <%else%>
+     <p class="center">You don't have conflicts to solve, rest and enjoy the app</p>
+    <%= link_to 'browse', spots_path, class: 'btn' %>
+    <%end%>
+  </div>
+
 </div>
 
 <div class="container-logout">
