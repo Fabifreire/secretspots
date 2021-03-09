@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
       render "new"
     end
 
+  def show
+    @review = Review.find params[:id]
+    @report = @review.reports.new
+  end
+
   def destroy
   end
 

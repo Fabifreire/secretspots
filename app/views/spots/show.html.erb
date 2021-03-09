@@ -66,6 +66,9 @@
                         <%= b.user.last_name %>
                         </p></strong>
                         <p><%= b.description %></p>
+                        <div class="action">
+                        <%= link_to 'report', new_review_report_path(b), class: 'btn' %>
+                        </div>
                 </div>
           <%end%>
         </div>
@@ -80,6 +83,10 @@
   <div class="action">
     <%= link_to 'write a review', new_spot_review_path(@spot), class: 'btn' %>
   </div>
+  <div class=“action”>
+    <%= link_to 'report', new_spot_report_path(@spot), class: 'btn' %>
+  </div>
+
 <br>
 <br>
 <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>

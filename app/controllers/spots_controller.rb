@@ -38,6 +38,9 @@ class SpotsController < ApplicationController
     if @user
       @favorites = @user.favorites
     end
+
+    @report = @spot.reports.new
+
 	end
 
   def new
