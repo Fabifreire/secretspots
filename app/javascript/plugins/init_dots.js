@@ -9,7 +9,7 @@ const initDots = () =>  {
 		const flicking = new Flicking("#pictures_list", { circular: true, gap: 10 });
 		const dots = [].slice.call(pagination.querySelectorAll(".dot"));
 		dots.forEach((dot, i) => {
-			dot.addEventListener("move", () => {
+			dot.addEventListener("click", () => {
 				flicking.moveTo(i);
 			});
 		});

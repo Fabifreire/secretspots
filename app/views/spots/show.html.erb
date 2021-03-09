@@ -16,7 +16,7 @@
        <%= image_tag "spot.jpg", class: 'spot_img' %>
       <% end %>
     </div>
-      <% unless @pictures.count < 1 %>
+      <% if @pictures.count > 1 %>
         <div class="pagination">
           <% @pictures.count.times do%>
             <div class="dot"></div>
