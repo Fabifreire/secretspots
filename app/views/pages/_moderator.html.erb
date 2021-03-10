@@ -55,6 +55,7 @@
               <i class="fas fa-search-minus"></i>
             <span class="btn-small">Inspect Content</span>
             <%end%>
+            <br>
             <%= link_to outlaw_path(Spot.find(d.reportable_id).user), class: 'btn-small' do %>
               <i class="fas fa-user-slash"></i>
               <span class="btn-small">Ban User</span>
@@ -67,7 +68,7 @@
            <span class="btn-small">Inspect Content</span>
            <%end%>
            <br>
-           <br>
+          
             <%= link_to outlaw_path(rev.user), class: 'btn-small' do %>
             <i class="fas fa-user-slash"></i>
             <span class="btn-small">Ban User</span>
