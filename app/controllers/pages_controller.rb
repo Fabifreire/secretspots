@@ -11,6 +11,8 @@ class PagesController < ApplicationController
     @reports = Report.all
     @upcoming_duty = @reports.where(done: false)
     @done_duty = @reports.where(done: true)
+    @users = User.all
+    @banned_users = @users.where(banned: true)
     # @parent = parent
 
     # reports

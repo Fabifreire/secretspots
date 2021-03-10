@@ -50,9 +50,13 @@
           <p class="spot_text"><strong>Content Report: </strong><%= d.description%></p>
           <p class="spot_text"><strong>Filed by: </strong><%= User.find(d.user_id).first_name%> <%= d.user.last_name.capitalize%></p>
             <% if d.reportable_type === 'Spot' %>
+            <p class="spot_text"><strong>Reported user: </strong> <%=  Spot.find(d.reportable_id).user.username %> </p>
+            <%= link_to 'Ban this user >', outlaw_path(Spot.find(d.reportable_id).user), class: 'btn-small' %>
             <%= link_to 'Go check >', spot_path(d.reportable_id), class: 'btn-small' %>
           <%elsif d.reportable_type === 'Review'%>
             <% rev = Review.find(d.reportable_id)%>
+            <p class="spot_text"><strong>Reported user: </strong> <%=  rev.user.username %> </p>
+            <%= link_to 'Ban this user >', outlaw_path(rev.user), class: 'btn-small' %>
            <%= link_to 'Go check >', spot_path(rev.spot, anchor: "review_id_#{rev.id}"), class: 'btn-small' %>
           <%end%>
           <%= render 'reports/update', report: d %>
@@ -102,6 +106,27 @@
     <p class="center">Explore secrets!</p>
     <%= link_to 'Browse', spots_path, class: 'btn' %>
 </div>
+  <% if @banned_users.any?%>
+    <div class="horizontal" id="outlaws">
+      <h3 class="spot_name-blue">filthy outlaws</h3>
+        <div class="scroll">
+          <% @banned_users.reverse.each do |d|%>
+            <div class="report_box report_box-done" id="outlaw_id_<%=d.id%>">
+              <p class="spot_name-blue">outlaw #<%=d.id%></p>
+              <p class="spot_text"><strong>Username: </strong><%= d.username%></p>
+              <p class="spot_text"><strong>Email: </strong><%= d.email%></p>
+              <p class="spot_text"><strong>Secretspots police caught you, filthy outlaw.</strong></p>
+              <div class="report_actions">
+              <i class="fas fa-check-circle"></i>
+              </div>
+            </div>
+          <%end%>
+      </div>
+    </div>
+  <%end%> 
+  <div class="container-nomargin">
+  </div>
+
 
 <div class="horizontal">
   <h3 class="spot_name-blue">Favourites</h3>

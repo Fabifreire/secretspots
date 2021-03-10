@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_03_10_095430) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,9 +67,9 @@ ActiveRecord::Schema.define(version: 2021_03_10_095430) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "done", default: false
     t.string "reportable_type"
     t.bigint "reportable_id"
+    t.boolean "done", default: false
     t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
