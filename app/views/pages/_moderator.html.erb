@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="moderator_logo">
+    <%= image_tag 'police_car.svg' %>
+  <p>Welcome to: <br> <span class="small-text">Secretspot Police</span></p>
+  </div>
+    <div class="profile_card profile_card-moderator">
+    <div class="profile_content">
+      <div class="profile_text">
+      <p class="spot_name">Moderator</p>
+      <p class="spot_text"><strong>Username: </strong><%= @user.username%></p>
+      <p class="spot_text"><strong>Email: </strong><%= @user.email%></p>
+      </div>
+      <div class="profile_media">
+        <%= user_image_tag @user, class: 'profile_pic'%>
+        <%= link_to edit_user_registration_path do%>
+          <%# <i class="fas fa-certificate float-right"></i> %>
+          <i class="fas fa-award float-right"></i>
+        <% end%>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="horizontal" id="upcoming">
+          
+  <h3 class="spot_name-blue" >Upcoming duties: tot <%= @upcoming_duty.count%></h3>
+    <% if @upcoming_duty.any?%>
+      <div class="scroll">
+      <% @upcoming_duty.reverse.each do |d|%>
+        <div class="report_box" id="report_id_<%=d.id%>">
+          <p class="spot_name-blue">Report #<%=d.id%></p>
+          <p class="spot_text"><strong>Intervention at: </strong>
+          <% if d.reportable_type === 'Spot' %>
+            <%= link_to spot_path(d.reportable_id), class: 'btn-small' do%>
+              <span>Item <%=Spot.find(d.reportable_id).id%></span>
+              <i class="fas fa-exclamation-triangle"></i>
+            <%end%>
+          <%elsif d.reportable_type === 'Review'%>
+            <% rev = Review.find(d.reportable_id)%>
+           <%= link_to spot_path(rev.spot, anchor: "review_id_#{rev.id}"), class: 'btn-small' do%>
+              <span>Item<%=Review.find(d.reportable_id).id%></span>
+              <i class="fas fa-exclamation-triangle"></i>
+            <%end%>
+          <%end%>
+          </p>
+          <p class="spot_text"><strong>Type: </strong><%= d.reportable_type%></p>
+          <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
+          <p class="spot_text"><strong>Content Report: </strong><%= d.description%></p>
+          <p class="spot_text"><strong>Filed by: </strong><%= User.find(d.user_id).first_name%> <%= d.user.last_name.capitalize%></p>
+            <% if d.reportable_type === 'Spot' %>
+            <%= link_to 'Go check >', spot_path(d.reportable_id), class: 'btn-small' %>
+          <%elsif d.reportable_type === 'Review'%>
+            <% rev = Review.find(d.reportable_id)%>
+           <%= link_to 'Go check >', spot_path(rev.spot, anchor: "review_id_#{rev.id}"), class: 'btn-small' %>
+          <%end%>
+          <%= render 'reports/update', report: d %>
+        </div>
+      <%end%>
+    </div>
+    <%else%>
+      <% if @upcoming_duty.any?%>
+        <p class="center">Ya better get to work!</p>
+      <%else%>
+        <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
+      <%end%>
+    <%end%>
+
+</div>
+
+<div class="container-nomargin">
+    <p class="center">In the meantime... would you like to share a secret?</p>
+    <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
+</div>
+
+<div class="horizontal" id="done">
+  <h3 class="spot_name-blue">Successfull interventions</h3>
+    <% if @done_duty.any?%>
+    <div class="scroll">
+      <% @done_duty.reverse.each do |d|%>
+        <div class="report_box report_box-done" id="report_id_<%=d.id%>">
+          <p class="spot_name-blue">Report #<%=d.id%></p>
+          <p class="spot_text"><strong>Type: </strong><%= d.reportable_type%></p>
+          <p class="spot_text"><strong>Category: </strong><%= d.category%></p>
+          <p class="spot_text"><strong>Content: </strong><%= d.description%></p>
+          <p class="spot_text"><strong>Filed by: </strong><%= User.find(d.user_id).first_name%> <%= d.user.last_name.capitalize%></p>
+          <div class="report_actions">
+          <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+      <%end%>
+  </div>
+    <%else%>
+     <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
+    <%#= link_to 'browse', spots_path, class: 'btn' %>
+    <%end%>
+
+</div>
+
+<div class="container-nomargin">
+    <p class="center">Explore secrets!</p>
+    <%= link_to 'Browse', spots_path, class: 'btn' %>
+</div>
+
+<div class="horizontal">
+  <h3 class="spot_name-blue">Favourites</h3>
+  <% if @favorites.reverse.any?%>
+  <div class="scroll">
+    <% @favorites.reverse.each do |s|%>
+    <div class="dashboard_card">
+
+          <% if s.spot.photos.attached? %>
+            <%= link_to spot_path(s.spot) do%>
+              <% photo = s.spot.photos.sample%>
+              <%= cl_image_tag photo.key, class: 'spot_img' %>
+            <% end %>
+            <% else %>
+            <%= link_to spot_path(s.spot) do%>
+              <%= image_tag "spot.jpg", class: 'spot_img'%>
+            <% end %>
+          <% end %>
+        <div class="spot_content">
+          <%= link_to s.spot.name, spot_path(s.spot), class: 'spot_name' %>
+          <p class="spot_text"><strong>Address: </strong><%= s.spot.address%></p>
+          <%#= link_to "https://www.google.com/maps/place/#{s.spot.address}/@#{s.spot.latitude},#{s.spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+            <%# <i class="fas fa-directions"></i> %>
+          <%#end%>
+          <p class="spot_text"><strong>Category: </strong><%= s.spot.category.capitalize%></p>
+          <div>
+          <span>Rating:</span>
+          <% avg_rating(s.spot).times do %>
+          <i class="fas fa-camera"></i>
+          <% end %>
+          </div>
+          <div class="actions">
+          <%= link_to new_spot_review_path(s.spot) , class: 'actions_btn' do %>
+          <i class="fas fa-comment-medical"></i>
+          <%end%>
+
+          </div>
+
+        </div>
+          <div id="favorite">
+            <%= render "favorites/add_fav", spot: s.spot %>
+          </div>
+    </div>
+  <% end%>
+  </div>
+  <%else%>
+    <p class="center">You don't have any favourites, browse for secrets!</p>
+    <%= link_to 'Browse', spots_path, class: 'btn' %>
+  <%end%>
+</div>
+
+<div class="container-logout">
+<p>Done with sharing secrets?
+<%= link_to "Logout.", destroy_user_session_path, method: :delete, class: "btn-small" %></p>
+</div>

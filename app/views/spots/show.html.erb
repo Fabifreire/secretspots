@@ -1,7 +1,6 @@
-<div class="container">
+div class="container">
   <h1 class="small-text"> Spot information </h1>
 </div>
-
   <div class="horizontal">
     <div class="scroll" id="pictures_list">
       <% if @pictures.count > 1 %>
@@ -11,7 +10,7 @@
         <% end %>
       <% elsif @pictures.count === 1%>
         <% photo = @pictures.sample%>
-        <%= cl_image_tag photo.key, class: 'spot_img' %> 
+        <%= cl_image_tag photo.key, class: 'spot_img' %>
       <% else %>
        <%= image_tag "spot.jpg", class: 'spot_img' %>
       <% end %>
@@ -24,16 +23,25 @@
         </div>
       <% end %>
   </div>
-
   <div class="container-nomargin">
-
         <div class="spot_content">
-          <div class="favorite">
-            <%= render "favorites/add_fav", spot: @spot %>
-          </div>
+            <% if current_user %>
+              <% if current_user.moderator? %>
+            <div class="mod_actions">
+              <p>As a moderator you can perform this actions on this spot:</p>
+                <%= render "moderator_destroy", spot: @spot %>
+            </div>
+              <% end %>
+            <% end %>
+          <% if current_user%>
+            <% unless current_user.moderator?%>
+            <div class="favorite">
+              <%= render "favorites/add_fav", spot: @spot %>
+            </div>
+            <%end%>
+          <%end%>
           <h3 class="spot_name spot_name-blue"><%=@spot.name%></h3>
           <p class="spot_text"><strong>Category: </strong><%= @spot.category.capitalize%></p>
-
           <div>
           <span>Rating:</span>
           <% avg_rating(@spot).times do %>
@@ -41,41 +49,46 @@
           <% end %>
           </div>
 
-          <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
+            <% if current_user.blank? || !current_user.moderator? %>
+              <%= link_to "https://www.google.com/maps/dir//#{@spot.address}/@#{@spot.latitude},#{@spot.longitude},z", class: 'info_action right', target: '_blank' do %>
 
-            <i class="fas fa-directions"></i>
+                <i class="fas fa-directions"></i>
+              <% end %>
+
           <%end%>
           <p class="spot_text"><strong>Address: </strong><%= @spot.address%></p>
-
           <br>
-
           <p class="spot_name-blue">Description</p>
           <p class="spot_text"> <%= @spot.description%> </p>
-          <% if current_user %>
-            <% if @spot.user == current_user || current_user.moderator? %>
-             <%= render "moderator_destroy", spot: @spot %>
-           <% end %>
-          <% end %>
+
+
            <%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
 <br>
 <h3 class="card-link">Reviews</h3>
   <% if @spot.reviews.empty? %>
     <p>Sorry... this spot has not been reviewed yet.<br>
     Be the first.</p>
-
   <% else %>
-
   <div class="horizontal" id="reviews">
         <div class="scroll">
             <% if @spot.reviews.reverse.count > 1%>
               <% @spot.reviews.reverse.each do |b|%>
-                <div class="review_box" id="<%=b.id%>">
+                <div class="review_box" id="review_id_<%=b.id%>">
+                  <% if current_user %>
+                    <% unless current_user.moderator?%>
+                        <%= link_to new_review_report_path(b) do %>
+                        <div class="reports_btns">
+                        <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <%end%>
+                    <%end%>
+                  <%end%>
                   <div class="badge">
                     <% b.rating.to_i.times do %>
                   <i class="fas fa-camera"></i>
                     <% end %>
                   </div>
-                  <p><strong>
+                  <p><strong>By 
                   <%= b.user.first_name %>
                   <%= b.user.last_name %>
                   </p></strong>
@@ -90,19 +103,27 @@
               <%end%>
             <%else%>
               <% @spot.reviews.reverse.each do |b|%>
-                  <div class="review_box review_box-full" id="review_<%=b.id%>">
+                  <div class="review_box review_box-full" id="review_id_<%=b.id%>">
+                              <% if current_user %>
+                    <% unless current_user.moderator?%>
+                        <%= link_to new_review_report_path(b) do %>
+                        <div class="reports_btns">
+                        <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <%end%>
+                    <%end%>
+                  <%end%>
                     <div class="badge">
                       <% b.rating.to_i.times do %>
                       <i class="fas fa-camera"></i>
                       <% end %>
                     </div>
-                        <p><strong><%=b.user.first_name %> <%= b.user.last_name %></strong></p>
-                        <p class="review_descripition">here class<%= b.description %></p>
-                      
+                        <p><strong>By <%=b.user.first_name %> <%= b.user.last_name %></strong></p>
+                        <p class="review_descripition"><%= b.description %></p>
                   <%= render "likes/like", spot: @spot, review: b %>
                   <% if current_user %>
                     <% if current_user.moderator? %>
-                      <%= render "reviews/moderator_destroy", spot: @spot, review: b %>
+                      <%= render "reviews/moderator_destroy", review: b %>
                     <% end %>
                   <% end %>
                 </div>
@@ -111,19 +132,26 @@
         </div>
     </div>
   </div>
-
   <% end %>
-
-         </div>
-
-  </div>
-  <div class="action">
     <%= link_to 'write a review', new_spot_review_path(@spot), class: 'btn' %>
+         </div>
   </div>
-<br>
-<br>
-<%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
 
+
+
+  <div class="container-nomargin text-center">
+    <% if current_user %>
+    <% unless current_user.moderator?%>
+    <p>Inappropriate content?</p>
+        <%= link_to new_spot_report_path(@spot) do %>
+        <span class="btn-small">Report spot</span>
+        <i class="fas fa-bullhorn"></i>
+        <%end%>
+      <%end%>
+    <%end%>
+    </div>
+
+<%#= link_to '< Back to list', spots_path, class: 'btn-small' %>
 <div class="up">
     <%= link_to :back do %>
     <i class="fas fa-arrow-left"></i>

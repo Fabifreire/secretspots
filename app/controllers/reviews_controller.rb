@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_spot
+  before_action :find_spot, only: %i[new create ]
 
   def new
     @review = Review.new
@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(reviews_params)
-    
+
     @review.spot = @spot
     @review.user = current_user
     if @review.save
@@ -16,12 +16,19 @@ class ReviewsController < ApplicationController
       render "new"
     end
   end
-  
+
+  def show
+    @review = Review.find params[:id]
+    @report = @review.reports.new
+  end
+
   def destroy
     @review = Review.find(params[:id])
      if current_user.moderator?
       @review.destroy
-      redirect_to spot_path(@review.spot)
+      # redirect_to spot_path(@review.spot)
+      redirect_to dashboard_path(anchor: :upcoming)
+
      else
       flash.now[:alert] = "Sorry, you dont have that permission."
       render "spots/show"

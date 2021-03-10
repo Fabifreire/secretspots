@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+
 // import MapboxDirections from 'mapbox-gl-directions';
 
 const api = 'pk.eyJ1Ijoic3VzYW5uYXBlenppbmkiLCJhIjoiY2trczlyYWRyMGNxMzJxcGJmOTZmY213byJ9.MKMDWkFyxS160hlxGSiT2g'
@@ -62,7 +63,7 @@ const initMapbox = () => {
         const markers = JSON.parse(mapElement.dataset.markers);
         addMarkersToMap(map, markers)
 
-        // fitMapToMarkers(map, markers);
+        fitMapToMarkers(map, markers);
 
         map.addControl(new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
