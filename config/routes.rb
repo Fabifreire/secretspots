@@ -27,4 +27,5 @@ Rails.application.routes.draw do
     resources :reports, only: %i[new create]
   end
   resources :reports, only: %i[destroy]
+  get "outlaws/:id", to: "outlaws#banned", as: :outlaw
 end
