@@ -14,12 +14,19 @@
   </head>
 
   <body>
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
-    <div class="sorry" style="background-image: url('<%= image_path "deadpool.jpg" %>')">
-      <h3>Sorry man, can't join this party on your desktop, pull out your mobile</h3>
+    <div class="sorry">
+      <div class="centered">
+      <%= image_tag "deadpool3.png", class: "deadpool" %>
+      <div class="row1">
+        <h3>Looks like you can't join this party from your desktop..</h3>
+        <p> Join us on mobile!</p>
+      </div>
+    </div>
     </div>
   <footer>
     <div class="footer footer-top">

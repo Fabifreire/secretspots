@@ -11,7 +11,7 @@
 # Like.destroy_all
 # User.destroy_all
 puts "creating moderator"
-User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mrmoderator@hotmail.com", password:"123456", moderator: true)
+User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "moderator@b.com", password:"123456", moderator: true)
 # puts "generating 5 users"
 #5.times do
   #puts "."
@@ -36,7 +36,7 @@ User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", 
  #puts "generating 30 reviews"
  #30.times do
   # Review.create(user: User.all.sample, spot: Spot.all.sample, description: Faker::Quotes::Shakespeare.hamlet_quote, title: Faker::Name.name, rating: rand(0..5))
-#end 
+#end
 # puts "Success!"
 
 
