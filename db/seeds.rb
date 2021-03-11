@@ -15,7 +15,8 @@
 # Spot.destroy_all
 # # User.destroy_all
 # puts "creating moderator"
-User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mrmoderator@hotmail.com", password:"123456", moderator: true)
+User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "moderator@mail.com", password:"123456", moderator: true)
+User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mister@mail.com", password:"123456", moderator: true)
 # puts "generating 5 users"
 # 5.times do
 #   puts "."
