@@ -1,17 +1,13 @@
-<div class="container">
-  <h3 class="small-title"> Write your review!</h3>
-    <%= simple_form_for [@parent, @report]  do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-      <%= f.input :category, as: :select, collection: ["spam", "inappropriate"] %>
-      <%= f.input :description%>
-      <%= f.submit class: 'btn'%>
-    <% end %>
+<p class="text-center"> Report this to the moderators and help us keeping the website safe!</p>
 
-</div>
+<h3 class="small-title">Reporting item: <%=@parent.class%> #<%=@parent.id%></h3>
+  <%= simple_form_for [@parent, @report]  do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :category, as: :select, collection: ["spam", "inappropriate"] %>
+    <%= f.input :description%>
+    <%= f.submit class: 'btn'%>
+  <% end %>
 
-<div class="up">
-    <%= link_to :back do %>
-    <i class="fas fa-arrow-left"></i>
-  <%end%>
-</div>
+
+

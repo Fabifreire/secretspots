@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
+
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap";
@@ -12,11 +12,12 @@ import Flicking from "@egjs/flicking";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initDots } from '../plugins/init_dots';
-import { showButton } from "plugins/showButton"
+import { showButton } from "plugins/showButton";
+import { scrollToTop } from "plugins/scroll_to_top";
 // import { getDirections } from "plugins/get_directions"
 
 Rails.start()
-// Turbolinks.start()
+
 ActiveStorage.start()
 
 
@@ -31,10 +32,11 @@ ActiveStorage.start()
 // import { initSelect2 } from '../components/init_select2';
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   initMapbox();
   initAutocomplete();
   showButton();
+  scrollToTop();
   initDots();
   // const flicking = new Flicking("#pictures_list", { circular: true, gap: 10 });
 });

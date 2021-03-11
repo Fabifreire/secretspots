@@ -112,7 +112,7 @@
   font-size: 1rem;
   font-weight: 600;
   text-decoration:none;
-  color: $action;
+  color: $lightaction;
   margin-bottom: 1rem;
   text-align: center;
   // &:hover {
@@ -180,4 +180,12 @@
 
 .icons-edit-delete-review-spot {
   padding-top: 0.4rem;
+}
+
+
+.actions_review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  margin-top: 1rem;
 }
