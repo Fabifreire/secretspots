@@ -55,7 +55,8 @@
               <i class="fas fa-search-minus"></i>
             <span class="btn-small">Inspect Content</span>
             <%end%>
-            <br>
+                <br>
+           <br>
             <%= link_to outlaw_path(Spot.find(d.reportable_id).user), class: 'btn-small' do %>
               <i class="fas fa-user-slash"></i>
               <span class="btn-small">Ban User</span>
@@ -88,14 +89,13 @@
 
 </div>
 
+
 <div class="container-nomargin">
-    <p class="center">In the meantime... would you like to share a secret?</p>
-    <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
 </div>
 
+<% if @done_duty.any?%>
 <div class="horizontal" id="done">
   <h3 class="spot_name-blue">Successfull interventions</h3>
-    <% if @done_duty.any?%>
     <div class="scroll">
       <% @done_duty.reverse.each do |d|%>
         <div class="report_box report_box-done" id="report_id_<%=d.id%>">
@@ -110,20 +110,16 @@
         </div>
       <%end%>
   </div>
-    <%else%>
-     <p class="center">You don't have conflicts to solve, rest and enjoy the app!</p>
-    <%#= link_to 'browse', spots_path, class: 'btn' %>
-    <%end%>
-
 </div>
+<%end%>
+
+
 
 <div class="container-nomargin">
-    <p class="center">Explore secrets!</p>
-    <%= link_to 'Browse', spots_path, class: 'btn' %>
 </div>
   <% if @banned_users.any?%>
     <div class="horizontal" id="outlaws">
-      <h3 class="spot_name-blue">filthy outlaws</h3>
+      <h3 class="spot_name-blue">Filthy outlaws</h3>
         <div class="scroll">
           <% @banned_users.reverse.each do |d|%>
             <div class="report_box report_box-done" id="outlaw_id_<%=d.id%>">
@@ -139,8 +135,11 @@
       </div>
     </div>
   <%end%> 
-  <div class="container-nomargin">
-  </div>
+
+<div class="container-nomargin">
+  <p class="center">In the meantime... would you like to share a secret?</p>
+  <%= link_to 'Add new spot', new_spot_path(@spot), class: 'btn' %>
+</div>
 
 
 <div class="horizontal">
@@ -192,6 +191,7 @@
     <%= link_to 'Browse', spots_path, class: 'btn' %>
   <%end%>
 </div>
+
 
 <div class="container-logout">
 <p>Done with sharing secrets?

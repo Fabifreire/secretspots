@@ -4,63 +4,66 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+    .rails-default-error-page {
+      background-color: rgba(220,246,236, 0.5);
+      color: #56BAD1;
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      margin: 0;
+  
+    }
+  
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero > h1 {
+      font-size: 20px;
+    }
+  
+    .hero > img {
+      width: 70vw;
+    }
+  
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 80vh;
+      width: 70vw;
+    }
+  
+    a {
+      color: #ffffff;
+      background-color: #EF767A;
+      border-radius: 50px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      margin: 2rem auto 0 auto;
+      display: inline-block;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1rem;
+    }
+  
+    </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  <div class="container">
+    <div class="hero">
+    <h1>Something went wrong... Before they hold you accountable, run home!</h1>
+    <img src="/404.svg" alt="404 error with deadpool">
+    <a href="https://secretspotz.herokuapp.com/" class="btn">Go Home</a>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
 </body>
 </html>
