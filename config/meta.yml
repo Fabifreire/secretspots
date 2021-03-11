@@ -1,4 +1,6 @@
-# meta_product_name: "Secret Spots"
-# meta_title: "Secret Spots | Stay off the Beaten Path"
-# meta_description: "At Secret Spots we believe tourism should be an opportunity to experience authentic places where locals feel comfortable inviting you in their extraordinary cultures."
-# meta_image: "cover.png" # should exist in `app/assets/images/`
+# config/meta.yml
+
+meta_product_name: "Secret Spots"
+meta_title: "Secret Spots | Stay off the Beaten Path"
+meta_description: "At Secret Spots we believe tourism should be an opportunity to experience authentic places where locals feel comfortable inviting you in their extraordinary cultures."
+meta_image: "cover.png" # should exist in `app/assets/images/`

@@ -2,7 +2,7 @@
   <%= form_tag spots_path, class: "search", method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a secret spot!"%>
     <%= select_tag "category", options_for_select(@categories, params[:category]), prompt: "Filter by category", class:"form-control"%>
-    <%= submit_tag "Search", class: "btn btn-primary btn-margintop" %>
+    <%= submit_tag "Search", class: "btn btn-margintop" %>
   <% end %>
 
 
@@ -37,7 +37,7 @@
         <div id="favorite">
           <%= render "favorites/add_fav", spot: spot %>
         </div>
-  
+
     </div>
   <% end %>
 </div>
@@ -45,5 +45,5 @@
 <div class="up" id="scrollTop">
   <%#= link_to spots_path(anchor: 'menu') do %>
   <i class="fas fa-arrow-up"></i>
-  <%# <% end %> 
+  <%# <% end %>
 </div>

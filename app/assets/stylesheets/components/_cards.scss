@@ -33,7 +33,11 @@
   text-decoration: none;
   text-align: left;
   text-transform: uppercase;
-  
+
+  &:link {
+    text-decoration: none;
+  }
+
   &-blue {
     color: $lightblue;
     font-family: $headers-font;
@@ -176,7 +180,7 @@
 
 
 .actions {
-  width: 100%; 
+  width: 100%;
   display: flex;
   align-items:baseline;
   justify-content: space-between;

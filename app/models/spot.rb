@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  CATEGORIES = %w[monument mirador panoramic beach bay cliff]
+  CATEGORIES = %w[Monument Mirador Panoramic Beach Bay Cliff]
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :reports, as: :reportable, dependent: :destroy
