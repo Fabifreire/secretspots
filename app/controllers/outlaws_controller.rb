@@ -7,6 +7,6 @@ class OutlawsController < ApplicationController
 		user1.likes.destroy_all
 		user1.favorites.destroy_all
 		flash[:error] = "User succesfully banned"
-		redirect_to dashboard_path
+		redirect_to dashboard_path(anchor: "outlaw_id_#{params[:id]}")
   end
 end
