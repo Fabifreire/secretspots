@@ -15,8 +15,9 @@ Review.destroy_all
 Spot.destroy_all
 User.destroy_all
 puts "creating moderators"
-User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "moderator@mail.com", password:"123456", moderator: true)
-User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mister@mail.com", password:"123456", moderator: true)
+User.create(first_name: "Mr", last_name: "Moderator", username: "Mr.Moderator", email: "mrmoderator@mail.com", password:"123456", moderator: true)
+User.create(first_name: "Mr", last_name: "Cocktail", username: "Mr.Cocktail", email: "cocktail@mail.com", password:"123456", moderator: true)
+User.create(first_name: "Mr", last_name: "Bean", username: "Mr.Bean", email: "bean@mail.com", password:"123456", moderator: true)
 # puts "generating 5 users"
 # 5.times do
 #   puts "."
