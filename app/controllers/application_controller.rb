@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-  { host: ENV["www.secretspots.me"] || "localhost:3000" }
-end
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end

@@ -1,4 +1,4 @@
-div class="container">
+<div class="container">
   <h1 class="small-text"> Spot information </h1>
 </div>
   <div class="horizontal">
@@ -88,7 +88,7 @@ div class="container">
                   <i class="fas fa-camera"></i>
                     <% end %>
                   </div>
-                  <p><strong>By 
+                  <p><strong>By
                   <%= b.user.first_name %>
                   <%= b.user.last_name %>
                   </p></strong>
@@ -142,7 +142,7 @@ div class="container">
   <div class="container-nomargin text-center">
     <% if current_user %>
     <% unless current_user.moderator?%>
-    <p>Inappropriate content?</p>
+    <br>
         <%= link_to new_spot_report_path(@spot) do %>
         <span class="btn-small">Report spot</span>
         <i class="fas fa-bullhorn"></i>

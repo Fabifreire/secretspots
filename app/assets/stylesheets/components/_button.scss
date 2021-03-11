@@ -19,7 +19,6 @@
 
 .btn-blue{
   color: $white;
-  // opacity: 0.8;
   border-radius: 30px;
   text-transform: uppercase;
   text-align: center;
@@ -34,16 +33,6 @@
   padding-bottom: 0.3rem;
 }
 
-  // height: 2rem;
-
-  // &:hover {
-  //   color: $white;
-  //   text-decoration: underline;
-  //   opacity: 1;
-  //   transition: opacity 0.3s ease-out;
-  // }
-
-
 .btn-home {
   color: $white;
   background-color: $lightaction;
@@ -53,15 +42,6 @@
   letter-spacing: 3px;
   font-weight: 600;
   transition: opacity 0.3s ease-out;
-
-  // height: 2rem;
-
-  // &:hover {
-  //   color: $white;
-  //   text-decoration: underline;
-  //   opacity: 1;
-  //   transition: opacity 0.3s ease-out;
-  // }
 }
 
 .btn-outline {
@@ -75,38 +55,8 @@
   border-radius: 50px;
   border: 1px solid $lightaction;
   padding: 0.75rem 1rem;
-  // opacity: 0.8;
   transition: opacity 0.3s ease-out;
-
-  // &:hover {
-  // color: $action;
-  //   text-decoration: underline;
-  //   opacity: 1;
-  //   transition: opacity 0.3s ease-out;
-  // }
 }
-
-// .action {
-//   width: 100%;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   @media (min-width: 769px) {
-//     width: 50%;
-//     margin: 0 auto;
-
-//   }
-
-//   &-icon {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-end;
-//   width: 30%;
-//   // justify-content: space-between;
-
-//   }
-// }
-
 
 .btn-small {
   font-size: 1rem;
@@ -115,16 +65,6 @@
   color: $lightaction;
   margin-bottom: 1rem;
   text-align: center;
-  // &:hover {
-  //   color: $action;
-  //   text-decoration: underline;
-  //   opacity: 1;
-  //   transition: opacity 0.3s ease-out;
-  // }
-  // @media (min-width: 769px) {
-  //   font-weight: 400;
-  //   font-size: 1rem;
-  // }
 }
 
 .up {
@@ -163,9 +103,6 @@
 }
 
 .stay_there {
-  // position: relative;
-  // bottom: 336px;
-  // left: 10%;
   z-index: 10;
   border-radius: 50%;
   opacity: 0.95;
