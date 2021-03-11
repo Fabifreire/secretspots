@@ -1,13 +1,15 @@
 // Specific CSS for your home-page
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css");
+
 .sorry {
   display: none;
    @media (min-width: 769px) {
      // display: inline-block;
      height: 100vh;
      width: 100vw;
-     background-color: $action;
+     background-color: $lightgreen;
      color: rgb(236, 24, 24);
-     z-index: 1111;
+     z-index: 2002;
      position: fixed;
      top: 0;
      display: flex;
@@ -18,12 +20,55 @@
      background-position: center;
      display: flex;
      justify-content: center;
-     
    }
 }
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css");
+.fa-mobile-alt {
+  width: 150%;
+  height: 150%;
+}
 
+.centered {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.centered h3 {
+  color: $lightblue;
+  font-family: $headers-font;
+  font-size: 1.5rem;
+  font-weight: 600;
+  // text-shadow: 4px 4px 3px rgba(255, 255, 255, 0.8);
+  // -webkit-text-stroke: 0.4px $light-gray;
+  letter-spacing: 2px;
+  line-height: 2rem;
+  text-align: justify;
+}
+
+.centered p {
+  color: $lightaction;
+  font-family: $headers-font;
+  margin-top: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  // text-shadow: 4px 4px 3px rgba(255, 255, 255, 0.8);
+  // -webkit-text-stroke: 0.4px $light-gray;
+  letter-spacing: 2px;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.deadpool {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  display: block;
+  box-shadow: 6px 6px 10px rgba(0,0,0,0.2);
+  border: $lightblue 7px solid;
+  margin-right: 3rem;
+}
 
 .header {
     padding-top: 30px;
@@ -37,7 +82,6 @@
     color: rgba(255,255,255,1);
     font-family: $headers-font;
     background-repeat: no-repeat;
-
 }
 
 .header h1 {
